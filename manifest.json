@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "链动小铺助手",
+  "version": "1.0.3",
+  "description": "Analyze and temporarily edit pages on wzyp.cn.",
+  "permissions": ["storage"],
+  "host_permissions": ["https://wzyp.cn/*", "https://*.wzyp.cn/*"],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; img-src 'self' data: https://wzyp.cn"
+  },
+  "icons": {
+    "128": "assets/store-icon-128.png"
+  },
+  "action": {
+    "default_title": "链动小铺助手",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [{
+    "matches": ["https://wzyp.cn/*", "https://*.wzyp.cn/*"],
+    "js": ["src/content.js"],
+    "run_at": "document_idle"
+  }]
+}

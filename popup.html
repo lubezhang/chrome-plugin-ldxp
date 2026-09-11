@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>链动小铺助手</title>
+    <link rel="stylesheet" href="tokens.css" />
+    <link rel="stylesheet" href="src/popup.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header>
+        <p class="eyebrow">WZYP.CN</p>
+        <h1 id="popup-title">链动小铺助手</h1>
+        <p id="page-title" class="page-title">正在读取当前页面...</p>
+      </header>
+      <section id="unsupported" class="notice" hidden>请在 wzyp.cn 页面中打开此扩展。</section>
+      <div id="tool-content" hidden>
+        <div class="tabs" role="tablist" aria-label="弹窗视图">
+          <button id="products-tab" class="tab" role="tab" aria-selected="true" aria-controls="settings">设置</button>
+          <button id="orders-tab" class="tab" role="tab" aria-selected="false" aria-controls="orders-panel">订单</button>
+        </div>
+        <section id="orders-panel" class="orders-panel" aria-label="订单列表" hidden>
+          <p id="order-contact" class="order-contact"></p>
+          <div id="order-list" class="order-list"></div>
+          <nav id="order-pagination" class="order-pagination" aria-label="订单分页" hidden>
+            <button id="order-previous-page" class="icon-button" type="button" title="上一页" aria-label="上一页">&#8592;</button>
+            <span id="order-page-info" class="order-page-info" aria-live="polite"></span>
+            <button id="order-next-page" class="icon-button" type="button" title="下一页" aria-label="下一页">&#8594;</button>
+          </nav>
+          <p id="orders-empty" class="orders-empty" hidden>未查询到订单。</p>
+          <div id="captcha-panel" class="captcha-panel" hidden>
+            <img id="captcha-image" alt="订单验证码" />
+            <input id="captcha-code" type="text" inputmode="text" autocomplete="off" placeholder="输入验证码" aria-label="验证码" />
+            <div class="captcha-actions"><button id="refresh-captcha" class="icon-button" title="刷新验证码" aria-label="刷新验证码">&#8635;</button><button id="verify-captcha" class="primary-button">验证</button></div>
+            <p id="captcha-status" class="captcha-status" role="status"></p>
+          </div>
+          <button id="start-captcha" class="primary-button">完成人机验证</button>
+        </section>
+        <section id="settings" class="settings" role="tabpanel" aria-labelledby="products-tab">
+          <p class="section-label">SETTINGS</p>
+          <div class="setting-row">
+            <div><h2>隐藏缺货商品</h2><p>默认开启</p></div>
+            <label class="switch" title="隐藏缺货商品">
+              <input id="hide-sold-out-toggle" type="checkbox" aria-label="隐藏缺货商品" />
+              <span class="switch-track"></span>
+            </label>
+          </div>
+          <form id="order-settings-form" class="order-settings-form">
+            <label class="setting-field" for="order-contact-input">
+              <span>联系方式</span>
+              <input id="order-contact-input" type="text" autocomplete="username" placeholder="邮箱或手机号" />
+            </label>
+            <label class="setting-field" for="order-password-input">
+              <span>安全密码</span>
+              <input id="order-password-input" type="password" autocomplete="current-password" maxlength="128" placeholder="可留空，用于读取订单卡密" />
+            </label>
+            <div class="order-settings-actions">
+              <button id="save-order-settings" class="primary-button" type="submit">保存订单配置</button>
+              <p id="order-settings-status" class="order-settings-status" role="status"></p>
+            </div>
+          </form>
+        </section>
+      </div>
+    </main>
+    <script src="src/popup.js"></script>
+  </body>
+</html>
