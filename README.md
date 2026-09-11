@@ -44,14 +44,16 @@ https://chromewebstore.google.com/detail/%E9%93%BE%E5%8A%A8%E5%B0%8F%E9%93%BA%E5
 每次发布更新前，请提升 `manifest.json` 中的 `version`，然后生成上传包：
 
 ```sh
-mkdir -p dist
-zip -r dist/linked-shop-helper-<version>.zip manifest.json popup.html tokens.css src assets -x '*/.DS_Store'
+./scripts/build.sh
 ```
+
+构建完成后，上传 `dist/linked-shop-helper-<version>.zip` 至 Chrome Web Store 开发者后台。
 
 ## 项目结构
 
 ```text
 assets/          扩展与商店图标
+scripts/build.sh 生成并校验 Chrome Web Store 上传包
 src/content.js   WZYP 页面内的商品、订单和自动填写逻辑
 src/popup.js     弹窗交互、订单配置与订单列表逻辑
 src/popup.css    弹窗样式
