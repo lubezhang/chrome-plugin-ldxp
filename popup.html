@@ -22,6 +22,22 @@
         </div>
         <section id="orders-panel" class="orders-panel" aria-label="订单列表" hidden>
           <p id="order-contact" class="order-contact"></p>
+          <div id="order-tools" class="order-tools" hidden>
+            <label class="search-field" for="order-search">
+              <span class="visually-hidden">搜索商品名或订单号</span>
+              <input id="order-search" type="search" autocomplete="off" placeholder="搜索商品名或订单号" />
+            </label>
+            <label class="visually-hidden" for="order-status-filter">筛选订单状态</label>
+            <select id="order-status-filter" aria-label="筛选订单状态">
+              <option value="all">全部状态</option>
+              <option value="0">未付款</option>
+              <option value="1">已付款</option>
+              <option value="2">已关闭</option>
+              <option value="3">已退款</option>
+            </select>
+            <button id="refresh-orders" class="icon-button" type="button" title="刷新订单" aria-label="刷新订单">&#8635;</button>
+          </div>
+          <p id="order-action-status" class="order-action-status" role="status"></p>
           <div id="order-list" class="order-list"></div>
           <nav id="order-pagination" class="order-pagination" aria-label="订单分页" hidden>
             <button id="order-previous-page" class="icon-button" type="button" title="上一页" aria-label="上一页">&#8592;</button>
@@ -29,6 +45,7 @@
             <button id="order-next-page" class="icon-button" type="button" title="下一页" aria-label="下一页">&#8594;</button>
           </nav>
           <p id="orders-empty" class="orders-empty" hidden>未查询到订单。</p>
+          <button id="retry-orders" class="secondary-button" type="button" hidden>重新查询</button>
           <div id="captcha-panel" class="captcha-panel" hidden>
             <img id="captcha-image" alt="订单验证码" />
             <input id="captcha-code" type="text" inputmode="text" autocomplete="off" placeholder="输入验证码" aria-label="验证码" />
@@ -39,13 +56,22 @@
         </section>
         <section id="settings" class="settings" role="tabpanel" aria-labelledby="products-tab">
           <p class="section-label">SETTINGS</p>
+          <label class="setting-field product-sort-field" for="product-sort-mode">
+            <span>商品排序</span>
+            <select id="product-sort-mode">
+              <option value="price-asc">价格从低到高</option>
+              <option value="price-desc">价格从高到低</option>
+              <option value="default">网站默认顺序</option>
+            </select>
+          </label>
           <div class="setting-row">
-            <div><h2>隐藏缺货商品</h2><p>默认开启</p></div>
+            <div><h2>隐藏缺货商品</h2><p>仅显示当前可购买商品</p></div>
             <label class="switch" title="隐藏缺货商品">
               <input id="hide-sold-out-toggle" type="checkbox" aria-label="隐藏缺货商品" />
               <span class="switch-track"></span>
             </label>
           </div>
+          <p id="product-settings-status" class="product-settings-status" role="status"></p>
           <form id="order-settings-form" class="order-settings-form">
             <label class="setting-field" for="order-contact-input">
               <span>联系方式</span>
@@ -55,6 +81,11 @@
               <span>安全密码</span>
               <input id="order-password-input" type="password" autocomplete="current-password" maxlength="128" placeholder="可留空，用于读取订单卡密" />
             </label>
+            <label class="checkbox-row" for="remember-order-password">
+              <input id="remember-order-password" type="checkbox" />
+              <span>在此设备上长期记住安全密码</span>
+            </label>
+            <p class="privacy-hint">未勾选时，安全密码将在退出浏览器后清除。</p>
             <div class="order-settings-actions">
               <button id="save-order-settings" class="primary-button" type="submit">保存订单配置</button>
               <p id="order-settings-status" class="order-settings-status" role="status"></p>

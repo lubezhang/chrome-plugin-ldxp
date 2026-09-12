@@ -1,9 +1,10 @@
 {
   "manifest_version": 3,
+  "minimum_chrome_version": "102",
   "name": "链动小铺助手",
-  "version": "1.0.3",
-  "description": "Analyze and temporarily edit pages on wzyp.cn.",
-  "permissions": ["storage"],
+  "version": "1.1.0",
+  "description": "整理链动小铺商品，查询订单并安全查看卡密。",
+  "permissions": ["storage", "clipboardWrite"],
   "host_permissions": ["https://wzyp.cn/*", "https://*.wzyp.cn/*"],
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self'; img-src 'self' data: https://wzyp.cn"
@@ -14,6 +15,9 @@
   "action": {
     "default_title": "链动小铺助手",
     "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "src/background.js"
   },
   "content_scripts": [{
     "matches": ["https://wzyp.cn/*", "https://*.wzyp.cn/*"],

@@ -13,12 +13,16 @@ const PRODUCT_GRID_CLASS = "wzyp-product-grid";
 const TARGET_SHOP_TOKEN = "2VWX76A4";
 const TARGET_CARD_CATEGORY_ID = 67214;
 const FILTER_SETTING_KEY = "hideSoldOutProducts";
+const PRODUCT_SORT_SETTING_KEY = "productSortMode";
 const ORDER_TICKET_STORAGE_KEY = "wzypOrderVerificationTicket";
 const ORDER_CONTACT_SETTING_KEY = "orderContact";
 const ORDER_PASSWORD_SETTING_KEY = "orderPassword";
+const REMEMBER_ORDER_PASSWORD_SETTING_KEY = "rememberOrderPassword";
 const unavailableGoodsKeys = new Set();
 const unavailableGoodsNames = new Set();
+const originalProductOrders = new Map();
 let filterEnabled = true;
+let productSortMode = "price-asc";
 let orderCaptcha = null;
 let orderTicket = null;
 let orderTicketLoaded = false;
@@ -82,12 +86,25 @@ function getAccountInfo() {
 async function getSavedOrderTicket() {
   if (orderTicketLoaded) return orderTicket;
   orderTicketLoaded = true;
+  try {
+    const response = await chrome.runtime.sendMessage({ type: "get-session-order-ticket" });
+    if (response?.ticket) {
+      orderTicket = response.ticket;
+      return orderTicket;
+    }
+  } catch {
+    // Fall through to migrate tickets saved by earlier extension versions.
+  }
   const storage = chrome.storage?.local;
   if (!storage) return null;
   const saved = await storage.get({ [ORDER_TICKET_STORAGE_KEY]: "" });
   orderTicket = typeof saved[ORDER_TICKET_STORAGE_KEY] === "string" && saved[ORDER_TICKET_STORAGE_KEY]
     ? saved[ORDER_TICKET_STORAGE_KEY]
     : null;
+  if (orderTicket) {
+    const migrated = await chrome.runtime.sendMessage({ type: "set-session-order-ticket", ticket: orderTicket }).catch(() => null);
+    if (migrated?.saved) await storage.remove(ORDER_TICKET_STORAGE_KEY).catch(() => {});
+  }
   return orderTicket;
 }
 
@@ -95,20 +112,17 @@ async function saveOrderTicket(ticket) {
   orderTicket = ticket;
   orderTicketLoaded = true;
   try {
-    await chrome.storage?.local?.set({ [ORDER_TICKET_STORAGE_KEY]: ticket });
+    await chrome.runtime.sendMessage({ type: "set-session-order-ticket", ticket });
   } catch {
-    // The ticket remains usable for this page when extension storage is unavailable.
+    // The ticket remains usable for this page when session storage is unavailable.
   }
 }
 
 async function clearSavedOrderTicket() {
   orderTicket = null;
   orderTicketLoaded = true;
-  try {
-    await chrome.storage?.local?.remove(ORDER_TICKET_STORAGE_KEY);
-  } catch {
-    // A stale ticket may remain in storage, but it no longer applies to this page.
-  }
+  await chrome.runtime.sendMessage({ type: "clear-session-order-ticket" }).catch(() => {});
+  await chrome.storage?.local?.remove(ORDER_TICKET_STORAGE_KEY).catch(() => {});
 }
 
 function isVerificationFailure(message) {
@@ -118,17 +132,30 @@ function isVerificationFailure(message) {
 async function getOrderAutofillSettings() {
   if (orderAutofillSettings) return orderAutofillSettings;
   const storage = chrome.storage?.local;
-  const saved = storage ? await storage.get({
-    [ORDER_CONTACT_SETTING_KEY]: "",
-    [ORDER_PASSWORD_SETTING_KEY]: ""
-  }) : {};
+  const saved = storage ? await storage.get([
+    ORDER_CONTACT_SETTING_KEY,
+    ORDER_PASSWORD_SETTING_KEY,
+    REMEMBER_ORDER_PASSWORD_SETTING_KEY
+  ]) : {};
+  const rememberPassword = typeof saved[REMEMBER_ORDER_PASSWORD_SETTING_KEY] === "boolean"
+    ? saved[REMEMBER_ORDER_PASSWORD_SETTING_KEY]
+    : Boolean(saved[ORDER_PASSWORD_SETTING_KEY]);
+  let password = rememberPassword && typeof saved[ORDER_PASSWORD_SETTING_KEY] === "string"
+    ? saved[ORDER_PASSWORD_SETTING_KEY]
+    : "";
+  if (!password) {
+    try {
+      const response = await chrome.runtime.sendMessage({ type: "get-session-order-password" });
+      password = typeof response?.password === "string" ? response.password : "";
+    } catch {
+      password = "";
+    }
+  }
   orderAutofillSettings = {
     contact: typeof saved[ORDER_CONTACT_SETTING_KEY] === "string" && saved[ORDER_CONTACT_SETTING_KEY].trim()
       ? saved[ORDER_CONTACT_SETTING_KEY].trim()
       : "",
-    password: typeof saved[ORDER_PASSWORD_SETTING_KEY] === "string" && saved[ORDER_PASSWORD_SETTING_KEY]
-      ? saved[ORDER_PASSWORD_SETTING_KEY]
-      : ""
+    password
   };
   return orderAutofillSettings;
 }
@@ -216,7 +243,12 @@ async function getOrderInfo(contact, page = 1, pageSize = 10) {
     }
     throw new Error(payload.msg || "订单请求失败");
   }
-  return { orders: payload.data?.list || [], total: payload.data?.total || 0, current, pageSize: size };
+  return {
+    orders: Array.isArray(payload.data?.list) ? payload.data.list : [],
+    total: Number(payload.data?.total) || 0,
+    current,
+    pageSize: size
+  };
 }
 
 async function getOrderCards(tradeNo, password) {
@@ -334,7 +366,11 @@ function getProductCards() {
   return document.querySelectorAll(".goods_item, .goods-item");
 }
 
-function sortProductCardsByPrice() {
+function isTargetShopPage() {
+  return window.location.pathname === `/shop/${TARGET_SHOP_TOKEN}`;
+}
+
+function applyProductSort() {
   const groups = new Map();
   getProductCards().forEach((product) => {
     const parent = product.parentElement;
@@ -346,10 +382,36 @@ function sortProductCardsByPrice() {
   groups.forEach((cards, parent) => {
     if (cards.length < 2) return;
     parent.classList.add(PRODUCT_GRID_CLASS);
-    const sorted = [...cards].sort((first, second) => getProductPrice(first) - getProductPrice(second));
+    const originalOrder = originalProductOrders.get(parent) || [];
+    cards.forEach((card) => {
+      if (!originalOrder.includes(card)) originalOrder.push(card);
+    });
+    originalProductOrders.set(parent, originalOrder.filter((card) => card.isConnected));
+    const originalIndexes = new Map(originalOrder.map((card, index) => [card, index]));
+    const comparePrice = (first, second) => {
+      const firstPrice = getProductPrice(first);
+      const secondPrice = getProductPrice(second);
+      if (!Number.isFinite(firstPrice)) return Number.isFinite(secondPrice) ? 1 : 0;
+      if (!Number.isFinite(secondPrice)) return -1;
+      const difference = productSortMode === "price-desc" ? secondPrice - firstPrice : firstPrice - secondPrice;
+      return difference || (originalIndexes.get(first) ?? 0) - (originalIndexes.get(second) ?? 0);
+    };
+    const sorted = productSortMode === "default"
+      ? [...cards].sort((first, second) => (originalIndexes.get(first) ?? 0) - (originalIndexes.get(second) ?? 0))
+      : [...cards].sort(comparePrice);
     if (!sorted.some((card, index) => card !== cards[index])) return;
     sorted.forEach((card) => parent.append(card));
   });
+}
+
+function productState() {
+  return {
+    supported: isTargetShopPage(),
+    hidden: hiddenSoldOutCount(),
+    total: getProductCards().length,
+    filterEnabled,
+    sortMode: productSortMode
+  };
 }
 
 function findSoldOutProducts() {
@@ -399,7 +461,7 @@ async function loadTargetShopInventory() {
     }
   });
   if (filterEnabled) hideUnavailableGoodsByApi();
-  sortProductCardsByPrice();
+  applyProductSort();
 }
 
 function hideSoldOutProducts() {
@@ -420,7 +482,7 @@ function startProductObserver() {
         hideSoldOutProducts();
         hideUnavailableGoodsByApi();
       }
-      sortProductCardsByPrice();
+      applyProductSort();
     });
   });
   soldOutObserver.observe(document.body, { childList: true, characterData: true, subtree: true });
@@ -553,6 +615,32 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     verifyOrderCaptcha(message.code).then(sendResponse).catch((error) => sendResponse({ verified: false, error: error.message }));
     return true;
   }
+  if (message.type === "refresh-order-autofill") {
+    orderAutofillSettings = null;
+    scheduleOrderConfirmationAutofill();
+    sendResponse({ refreshed: true });
+  }
+  if (message.type === "get-product-state") sendResponse(productState());
+  if (message.type === "set-product-filter") {
+    if (!isTargetShopPage()) { sendResponse(productState()); return; }
+    filterEnabled = Boolean(message.enabled);
+    if (filterEnabled) {
+      enableSoldOutStyleFilter();
+      hideSoldOutProducts();
+      hideUnavailableGoodsByApi();
+    } else {
+      restoreSoldOutProducts();
+    }
+    applyProductSort();
+    startProductObserver();
+    sendResponse(productState());
+  }
+  if (message.type === "set-product-sort") {
+    if (!isTargetShopPage()) { sendResponse(productState()); return; }
+    productSortMode = ["default", "price-asc", "price-desc"].includes(message.mode) ? message.mode : "price-asc";
+    applyProductSort();
+    sendResponse(productState());
+  }
   if (message.type === "start-picker") { startPicker(); sendResponse({ started: true }); }
   if (message.type === "get-selected-element") sendResponse(selectionDetails());
   if (message.type === "hide-sold-out-products") {
@@ -573,11 +661,13 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
 });
 
 function enableTargetShopFilter() {
-  if (window.location.pathname !== "/shop/2VWX76A4" || !filterEnabled) return;
+  if (!isTargetShopPage()) return;
   enableTargetShopProductLayout();
-  enableSoldOutStyleFilter();
-  hideSoldOutProducts();
-  sortProductCardsByPrice();
+  if (filterEnabled) {
+    enableSoldOutStyleFilter();
+    hideSoldOutProducts();
+  }
+  applyProductSort();
   startProductObserver();
   loadTargetShopInventory().catch(() => {
     // The DOM-based filter continues to work if the inventory endpoint is unavailable.
@@ -589,11 +679,17 @@ async function initializeTargetShopFilter() {
   enableTargetShopProductLayout();
   const storage = chrome.storage?.local;
   if (storage) {
-    const settings = await storage.get({ [FILTER_SETTING_KEY]: true });
+    const settings = await storage.get({
+      [FILTER_SETTING_KEY]: true,
+      [PRODUCT_SORT_SETTING_KEY]: "price-asc"
+    });
     filterEnabled = settings[FILTER_SETTING_KEY];
+    productSortMode = ["default", "price-asc", "price-desc"].includes(settings[PRODUCT_SORT_SETTING_KEY])
+      ? settings[PRODUCT_SORT_SETTING_KEY]
+      : "price-asc";
   }
-  if (window.location.pathname === "/shop/2VWX76A4") {
-    sortProductCardsByPrice();
+  if (isTargetShopPage()) {
+    applyProductSort();
     startProductObserver();
   }
   enableTargetShopFilter();
@@ -604,10 +700,18 @@ chrome.storage?.onChanged?.addListener((changes, areaName) => {
   if (areaName !== "local") return;
   if (changes[FILTER_SETTING_KEY]) {
     filterEnabled = changes[FILTER_SETTING_KEY].newValue;
-    if (filterEnabled) enableTargetShopFilter();
-    else restoreSoldOutProducts();
+    if (isTargetShopPage()) {
+      if (filterEnabled) enableTargetShopFilter();
+      else restoreSoldOutProducts();
+    }
   }
-  if (changes[ORDER_CONTACT_SETTING_KEY] || changes[ORDER_PASSWORD_SETTING_KEY]) {
+  if (changes[PRODUCT_SORT_SETTING_KEY]) {
+    productSortMode = ["default", "price-asc", "price-desc"].includes(changes[PRODUCT_SORT_SETTING_KEY].newValue)
+      ? changes[PRODUCT_SORT_SETTING_KEY].newValue
+      : "price-asc";
+    if (isTargetShopPage()) applyProductSort();
+  }
+  if (changes[ORDER_CONTACT_SETTING_KEY] || changes[ORDER_PASSWORD_SETTING_KEY] || changes[REMEMBER_ORDER_PASSWORD_SETTING_KEY]) {
     orderAutofillSettings = null;
     scheduleOrderConfirmationAutofill();
   }
