@@ -18,6 +18,7 @@ const elements = {
   orderNextPage: document.querySelector("#order-next-page"),
   orderPageInfo: document.querySelector("#order-page-info"),
   ordersEmpty: document.querySelector("#orders-empty"),
+  configureOrders: document.querySelector("#configure-orders"),
   retryOrders: document.querySelector("#retry-orders"),
   captchaPanel: document.querySelector("#captcha-panel"),
   captchaImage: document.querySelector("#captcha-image"),
@@ -31,9 +32,12 @@ const elements = {
   hideSoldOutToggle: document.querySelector("#hide-sold-out-toggle"),
   productSettingsStatus: document.querySelector("#product-settings-status"),
   orderSettingsForm: document.querySelector("#order-settings-form"),
+  orderSettingsDisclosure: document.querySelector("#order-settings-disclosure"),
+  orderConfigSummary: document.querySelector("#order-config-summary"),
   orderContactInput: document.querySelector("#order-contact-input"),
   orderPasswordInput: document.querySelector("#order-password-input"),
   rememberOrderPassword: document.querySelector("#remember-order-password"),
+  saveOrderSettings: document.querySelector("#save-order-settings"),
   orderSettingsStatus: document.querySelector("#order-settings-status")
 };
 
@@ -93,30 +97,51 @@ async function saveOrderSettings() {
   const password = elements.orderPasswordInput.value;
   const rememberPassword = elements.rememberOrderPassword.checked;
   if (!contact) {
-    elements.orderSettingsStatus.textContent = "请输入联系方式。";
+    elements.orderSettingsStatus.dataset.tone = "error";
+    elements.orderSettingsStatus.textContent = "联系方式为空，请填写后再保存。";
+    elements.orderContactInput.setAttribute("aria-invalid", "true");
     elements.orderContactInput.focus();
     return;
   }
-  const contactChanged = contact !== orderContact;
-  orderContact = contact;
-  orderPassword = password;
-  await chrome.storage.local.set({
-    [ORDER_CONTACT_SETTING_KEY]: orderContact,
-    [REMEMBER_ORDER_PASSWORD_SETTING_KEY]: rememberPassword
-  });
-  if (rememberPassword) {
-    await chrome.storage.local.set({ [ORDER_PASSWORD_SETTING_KEY]: orderPassword });
-    await chrome.storage.session.remove(SESSION_ORDER_PASSWORD_KEY);
-  } else {
-    await chrome.storage.local.remove(ORDER_PASSWORD_SETTING_KEY);
-    await chrome.storage.session.set({ [SESSION_ORDER_PASSWORD_KEY]: orderPassword });
+  elements.orderContactInput.removeAttribute("aria-invalid");
+  delete elements.orderSettingsStatus.dataset.tone;
+  elements.saveOrderSettings.disabled = true;
+  elements.saveOrderSettings.setAttribute("aria-busy", "true");
+  elements.saveOrderSettings.textContent = "保存中";
+  try {
+    const contactChanged = contact !== orderContact;
+    orderContact = contact;
+    orderPassword = password;
+    await chrome.storage.local.set({
+      [ORDER_CONTACT_SETTING_KEY]: orderContact,
+      [REMEMBER_ORDER_PASSWORD_SETTING_KEY]: rememberPassword
+    });
+    if (rememberPassword) {
+      await chrome.storage.local.set({ [ORDER_PASSWORD_SETTING_KEY]: orderPassword });
+      await chrome.storage.session.remove(SESSION_ORDER_PASSWORD_KEY);
+    } else {
+      await chrome.storage.local.remove(ORDER_PASSWORD_SETTING_KEY);
+      await chrome.storage.session.set({ [SESSION_ORDER_PASSWORD_KEY]: orderPassword });
+    }
+    if (contactChanged) {
+      ordersLoaded = false;
+      allOrders = [];
+    }
+    elements.orderSettingsStatus.dataset.tone = "success";
+    elements.orderSettingsStatus.textContent = rememberPassword ? "已保存到此设备" : "已保存到本次会话";
+    updateOrderConfigSummary();
+    if (currentTabId) chrome.tabs.sendMessage(currentTabId, { type: "refresh-order-autofill" }).catch(() => {});
+  } finally {
+    elements.saveOrderSettings.disabled = false;
+    elements.saveOrderSettings.removeAttribute("aria-busy");
+    elements.saveOrderSettings.textContent = "保存配置";
   }
-  if (contactChanged) {
-    ordersLoaded = false;
-    allOrders = [];
-  }
-  elements.orderSettingsStatus.textContent = rememberPassword ? "已保存到此设备。" : "已保存到本次会话。";
-  if (currentTabId) chrome.tabs.sendMessage(currentTabId, { type: "refresh-order-autofill" }).catch(() => {});
+}
+
+function updateOrderConfigSummary() {
+  elements.orderConfigSummary.textContent = orderContact
+    ? `已配置 · ${elements.rememberOrderPassword.checked ? "设备保存" : "会话保存"}`
+    : "未配置";
 }
 
 function isWzypUrl(url) {
@@ -181,6 +206,17 @@ function button(label, className, onClick) {
   return element;
 }
 
+function showTemporaryButtonState(element, label) {
+  const previousLabel = element.textContent;
+  element.dataset.state = "success";
+  element.textContent = label;
+  window.setTimeout(() => {
+    if (!element.isConnected) return;
+    delete element.dataset.state;
+    element.textContent = previousLabel;
+  }, 1800);
+}
+
 function renderOrderCards(container, cards, error, retry) {
   container.replaceChildren();
   if (error) {
@@ -217,7 +253,7 @@ function renderOrderCards(container, cards, error, retry) {
   });
   const copyAll = button("复制全部", "text-button", () => {
     copyText(cards.join("\n"))
-      .then(() => setOrderActionStatus(`已复制 ${cards.length} 条卡密。`))
+      .then(() => showTemporaryButtonState(copyAll, `已复制 ${cards.length} 条`))
       .catch(() => setOrderActionStatus("复制失败，请重试。"));
   });
   toolbar.append(revealAll, copyAll);
@@ -240,7 +276,7 @@ function renderOrderCards(container, cards, error, retry) {
     });
     const copy = button("复制", "text-button", () => {
       copyText(card)
-        .then(() => setOrderActionStatus(`已复制卡密 ${index + 1}。`))
+        .then(() => showTemporaryButtonState(copy, "已复制"))
         .catch(() => setOrderActionStatus("复制失败，请重试。"));
     });
     const actions = document.createElement("div");
@@ -257,11 +293,12 @@ async function showOrderCards(order, container, trigger) {
   if (container.dataset.loaded === "true" || container.dataset.loading === "true") return;
   container.dataset.loading = "true";
   trigger.disabled = true;
-  trigger.textContent = "正在读取...";
+  trigger.setAttribute("aria-busy", "true");
+  trigger.textContent = "正在读取…";
   container.replaceChildren();
   const loading = document.createElement("p");
   loading.className = "order-cards-status";
-  loading.textContent = "正在读取卡密...";
+  loading.textContent = "正在读取卡密…";
   container.append(loading);
   container.hidden = false;
   try {
@@ -272,10 +309,11 @@ async function showOrderCards(order, container, trigger) {
     trigger.textContent = "卡密已读取";
   } catch (error) {
     trigger.disabled = false;
-    trigger.textContent = "查看卡密";
+    trigger.textContent = "读取卡密";
     renderOrderCards(container, [], error.message || "无法读取卡密", () => showOrderCards(order, container, trigger));
   } finally {
     delete container.dataset.loading;
+    trigger.removeAttribute("aria-busy");
   }
 }
 
@@ -311,18 +349,48 @@ function renderOrderItem(order) {
   detailsButton.setAttribute("aria-label", "打开订单详情");
   detailsButton.disabled = !order.trade_no;
   heading.append(product, detailsButton);
-  const meta = document.createElement("p");
-  meta.textContent = `${orderStatus(order.status)} · ¥${order.total_amount || "0.00"} · ${formatOrderTime(order.create_time)}`;
+  const meta = document.createElement("div");
+  meta.className = "order-meta";
+  const status = document.createElement("span");
+  status.className = "order-status";
+  status.dataset.status = String(order.status);
+  status.textContent = orderStatus(order.status);
+  const amount = document.createElement("span");
+  amount.className = "order-amount";
+  amount.textContent = `¥${order.total_amount || "0.00"}`;
+  const time = document.createElement("span");
+  time.className = "order-time";
+  time.textContent = formatOrderTime(order.create_time);
+  meta.append(status, amount, time);
   const number = document.createElement("p");
   number.className = "order-number";
-  number.textContent = `订单号：${order.trade_no || "-"}`;
+  number.textContent = order.trade_no || "无订单号";
+  number.title = order.trade_no ? `订单号：${order.trade_no}` : "无订单号";
   const cards = document.createElement("div");
   cards.className = "order-cards";
   cards.hidden = true;
-  const cardsButton = button("查看卡密", "secondary-button order-cards-button", () => showOrderCards(order, cards, cardsButton));
+  const cardsButton = button("读取卡密", "secondary-button order-cards-button", () => showOrderCards(order, cards, cardsButton));
   cardsButton.disabled = !order.trade_no;
-  item.append(heading, meta, number, cardsButton, cards);
+  const footer = document.createElement("div");
+  footer.className = "order-item-footer";
+  footer.append(number, cardsButton);
+  item.append(heading, meta, footer, cards);
   return item;
+}
+
+function renderOrderSkeletons() {
+  const skeletons = Array.from({ length: 3 }, () => {
+    const item = document.createElement("article");
+    item.className = "order-item order-skeleton";
+    item.setAttribute("aria-hidden", "true");
+    ["title", "meta", "footer"].forEach((name) => {
+      const line = document.createElement("span");
+      line.className = `skeleton-line skeleton-line--${name}`;
+      item.append(line);
+    });
+    return item;
+  });
+  elements.orderList.replaceChildren(...skeletons);
 }
 
 function renderOrders() {
@@ -335,21 +403,24 @@ function renderOrders() {
   elements.ordersEmpty.hidden = pageOrders.length > 0;
   elements.ordersEmpty.textContent = allOrders.length ? "没有符合筛选条件的订单。" : "未查询到订单。";
   elements.retryOrders.hidden = true;
+  elements.configureOrders.hidden = true;
   elements.orderTools.hidden = false;
-  elements.orderContact.textContent = `联系方式：${orderContact} · 共 ${loadedOrderTotal || allOrders.length} 笔`;
+  elements.orderContact.textContent = `${orderContact} · ${loadedOrderTotal || allOrders.length} 笔`;
   setOrderActionStatus(orders.length === allOrders.length ? "" : `已筛选出 ${orders.length} 笔订单。`);
   renderOrderPagination(orders.length);
 }
 
-function showOrdersMessage(title, message, { verification = false, retry = false } = {}) {
-  elements.orderList.replaceChildren();
+function showOrdersMessage(title, message, { verification = false, retry = false, configure = false, loading = false } = {}) {
+  if (loading) renderOrderSkeletons();
+  else elements.orderList.replaceChildren();
   elements.orderContact.textContent = title;
   elements.orderTools.hidden = true;
   elements.orderPagination.hidden = true;
   elements.captchaPanel.hidden = true;
   elements.startCaptcha.hidden = !verification;
   elements.ordersEmpty.textContent = message;
-  elements.ordersEmpty.hidden = false;
+  elements.ordersEmpty.hidden = loading;
+  elements.configureOrders.hidden = !configure;
   elements.retryOrders.hidden = !retry;
   setOrderActionStatus("");
 }
@@ -384,12 +455,12 @@ async function loadOrders(force = false) {
     return;
   }
   if (!orderContact) {
-    showOrdersMessage("尚未配置联系方式。", "请先在设置中填写联系方式。");
+    showOrdersMessage("尚未配置联系方式", "配置联系方式后即可查询订单。", { configure: true });
     return;
   }
   ordersLoading = true;
   elements.refreshOrders.disabled = true;
-  showOrdersMessage("正在查询订单...", "正在加载，请稍候。");
+  showOrdersMessage("正在查询订单…", "", { loading: true });
   try {
     const firstPage = await sendOrderMessage({ type: "get-order-info", contact: orderContact, page: 1, pageSize: ORDER_FETCH_PAGE_SIZE });
     if (firstPage.requiresVerification) {
@@ -421,10 +492,13 @@ async function loadOrders(force = false) {
 
 async function loadCaptcha() {
   elements.captchaPanel.hidden = false;
+  elements.ordersEmpty.hidden = true;
   elements.startCaptcha.hidden = true;
   elements.retryOrders.hidden = true;
-  elements.captchaStatus.textContent = "正在加载验证码...";
+  elements.captchaStatus.textContent = "正在加载验证码…";
   elements.verifyCaptcha.disabled = true;
+  elements.verifyCaptcha.removeAttribute("aria-busy");
+  elements.verifyCaptcha.textContent = "验证并查询";
   const captcha = await sendOrderMessage({ type: "start-order-captcha" });
   if (captcha.error) throw new Error(captcha.error);
   elements.captchaImage.src = captcha.imageUrl;
@@ -438,12 +512,16 @@ async function verifyCaptcha() {
   const code = elements.captchaCode.value.trim();
   if (!code) { elements.captchaStatus.textContent = "请输入验证码。"; return; }
   elements.verifyCaptcha.disabled = true;
-  elements.captchaStatus.textContent = "正在验证...";
+  elements.verifyCaptcha.setAttribute("aria-busy", "true");
+  elements.verifyCaptcha.textContent = "验证中…";
+  elements.captchaStatus.textContent = "正在验证…";
   const result = await sendOrderMessage({ type: "verify-order-captcha", code });
   if (!result.verified) {
     elements.captchaStatus.textContent = result.error || "验证码不正确，请重试。";
     if (result.imageUrl) elements.captchaImage.src = result.imageUrl;
     elements.verifyCaptcha.disabled = false;
+    elements.verifyCaptcha.removeAttribute("aria-busy");
+    elements.verifyCaptcha.textContent = "验证并查询";
     elements.captchaCode.focus();
     return;
   }
@@ -455,8 +533,9 @@ async function showOrders() {
   elements.ordersPanel.hidden = false;
   elements.settings.hidden = true;
   elements.productsTab.setAttribute("aria-selected", "false");
+  elements.productsTab.tabIndex = -1;
   elements.ordersTab.setAttribute("aria-selected", "true");
-  elements.popupTitle.textContent = "订单信息";
+  elements.ordersTab.tabIndex = 0;
   await loadOrders();
 }
 
@@ -468,7 +547,7 @@ function productStatusText(state) {
 }
 
 async function updateProductPreferences(type) {
-  elements.productSettingsStatus.textContent = "正在应用...";
+  elements.productSettingsStatus.textContent = "正在应用…";
   await chrome.storage.local.set({
     [FILTER_SETTING_KEY]: elements.hideSoldOutToggle.checked,
     [PRODUCT_SORT_SETTING_KEY]: elements.productSortMode.value
@@ -491,8 +570,9 @@ function showProducts() {
   elements.ordersPanel.hidden = true;
   elements.settings.hidden = false;
   elements.productsTab.setAttribute("aria-selected", "true");
+  elements.productsTab.tabIndex = 0;
   elements.ordersTab.setAttribute("aria-selected", "false");
-  elements.popupTitle.textContent = "链动小铺助手";
+  elements.ordersTab.tabIndex = -1;
   refreshProductState().catch(() => { elements.productSettingsStatus.textContent = "刷新网页后即可应用商品设置。"; });
 }
 
@@ -500,6 +580,8 @@ async function initialize() {
   await Promise.all([loadProductSettings(), loadOrderSettings()]);
   elements.orderContactInput.value = orderContact;
   elements.orderPasswordInput.value = orderPassword;
+  updateOrderConfigSummary();
+  elements.orderSettingsDisclosure.open = !orderContact;
   const [currentTab] = await chrome.tabs.query({ active: true, currentWindow: true });
   elements.pageTitle.textContent = currentTab?.title || "未命名页面";
   const supported = isWzypUrl(currentTab?.url || "");
@@ -520,14 +602,43 @@ elements.productSortMode.addEventListener("change", () => updateProductPreferenc
 }));
 elements.orderSettingsForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  saveOrderSettings().catch((error) => { elements.orderSettingsStatus.textContent = error.message || "保存失败。"; });
+  saveOrderSettings().catch((error) => {
+    elements.orderSettingsStatus.dataset.tone = "error";
+    elements.orderSettingsStatus.textContent = error.message || "配置保存失败，请重试。";
+  });
 });
+elements.orderContactInput.addEventListener("input", () => {
+  elements.orderContactInput.removeAttribute("aria-invalid");
+  if (elements.orderSettingsStatus.dataset.tone === "error") {
+    delete elements.orderSettingsStatus.dataset.tone;
+    elements.orderSettingsStatus.textContent = "";
+  }
+});
+elements.rememberOrderPassword.addEventListener("change", updateOrderConfigSummary);
 elements.startCaptcha.addEventListener("click", () => loadCaptcha().catch((error) => { elements.captchaStatus.textContent = error.message || "无法加载验证码。"; }));
 elements.refreshCaptcha.addEventListener("click", () => loadCaptcha().catch((error) => { elements.captchaStatus.textContent = error.message || "无法刷新验证码。"; }));
-elements.verifyCaptcha.addEventListener("click", () => verifyCaptcha().catch((error) => { elements.captchaStatus.textContent = error.message || "验证失败。"; elements.verifyCaptcha.disabled = false; }));
+elements.verifyCaptcha.addEventListener("click", () => verifyCaptcha().catch((error) => {
+  elements.captchaStatus.textContent = error.message || "验证失败。";
+  elements.verifyCaptcha.disabled = false;
+  elements.verifyCaptcha.removeAttribute("aria-busy");
+  elements.verifyCaptcha.textContent = "验证并查询";
+}));
 elements.captchaCode.addEventListener("keydown", (event) => { if (event.key === "Enter") verifyCaptcha().catch(() => {}); });
 elements.productsTab.addEventListener("click", showProducts);
 elements.ordersTab.addEventListener("click", () => showOrders().catch(() => showOrdersMessage("订单查询失败。", "请刷新当前网页后重试。", { retry: true })));
+elements.configureOrders.addEventListener("click", () => {
+  showProducts();
+  elements.orderSettingsDisclosure.open = true;
+  elements.orderContactInput.focus();
+});
+elements.productsTab.parentElement.addEventListener("keydown", (event) => {
+  if (!["ArrowLeft", "ArrowRight"].includes(event.key)) return;
+  event.preventDefault();
+  const showNext = elements.productsTab.getAttribute("aria-selected") === "true";
+  const nextTab = showNext ? elements.ordersTab : elements.productsTab;
+  nextTab.focus({ preventScroll: true });
+  nextTab.click();
+});
 elements.orderSearch.addEventListener("input", () => { currentOrderPage = 1; renderOrders(); });
 elements.orderStatusFilter.addEventListener("change", () => { currentOrderPage = 1; renderOrders(); });
 elements.refreshOrders.addEventListener("click", () => loadOrders(true));

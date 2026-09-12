@@ -4,60 +4,74 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>链动小铺助手</title>
+    <link rel="icon" href="assets/store-icon-128.png" />
     <link rel="stylesheet" href="tokens.css" />
     <link rel="stylesheet" href="src/popup.css" />
   </head>
   <body>
     <main class="app">
-      <header>
-        <p class="eyebrow">WZYP.CN</p>
-        <h1 id="popup-title">链动小铺助手</h1>
-        <p id="page-title" class="page-title">正在读取当前页面...</p>
+      <header class="app-header">
+        <img class="brand-mark" src="assets/store-icon-128.png" alt="" width="32" height="32" />
+        <div class="brand-copy">
+          <h1 id="popup-title">链动小铺助手</h1>
+          <p id="page-title" class="page-title">正在读取当前页面…</p>
+        </div>
       </header>
       <section id="unsupported" class="notice" hidden>请在 wzyp.cn 页面中打开此扩展。</section>
       <div id="tool-content" hidden>
         <div class="tabs" role="tablist" aria-label="弹窗视图">
-          <button id="products-tab" class="tab" role="tab" aria-selected="true" aria-controls="settings">设置</button>
-          <button id="orders-tab" class="tab" role="tab" aria-selected="false" aria-controls="orders-panel">订单</button>
+          <button id="products-tab" class="tab" role="tab" aria-selected="true" aria-controls="settings">商品整理</button>
+          <button id="orders-tab" class="tab" role="tab" aria-selected="false" aria-controls="orders-panel">订单查询</button>
         </div>
-        <section id="orders-panel" class="orders-panel" aria-label="订单列表" hidden>
-          <p id="order-contact" class="order-contact"></p>
+        <section id="orders-panel" class="orders-panel" role="tabpanel" aria-labelledby="orders-tab" hidden>
+          <div class="panel-heading">
+            <div>
+              <h2>订单查询</h2>
+              <p id="order-contact" class="order-contact"></p>
+            </div>
+          </div>
           <div id="order-tools" class="order-tools" hidden>
             <label class="search-field" for="order-search">
-              <span class="visually-hidden">搜索商品名或订单号</span>
-              <input id="order-search" type="search" autocomplete="off" placeholder="搜索商品名或订单号" />
+              <span>搜索</span>
+              <input id="order-search" type="search" autocomplete="off" placeholder="商品名或订单号" />
             </label>
-            <label class="visually-hidden" for="order-status-filter">筛选订单状态</label>
-            <select id="order-status-filter" aria-label="筛选订单状态">
-              <option value="all">全部状态</option>
-              <option value="0">未付款</option>
-              <option value="1">已付款</option>
-              <option value="2">已关闭</option>
-              <option value="3">已退款</option>
-            </select>
-            <button id="refresh-orders" class="icon-button" type="button" title="刷新订单" aria-label="刷新订单">&#8635;</button>
+            <label class="filter-field" for="order-status-filter">
+              <span>状态</span>
+              <select id="order-status-filter">
+                <option value="all">全部</option>
+                <option value="0">未付款</option>
+                <option value="1">已付款</option>
+                <option value="2">已关闭</option>
+                <option value="3">已退款</option>
+              </select>
+            </label>
+            <button id="refresh-orders" class="icon-button" type="button" title="刷新订单" aria-label="刷新订单">↻</button>
           </div>
           <p id="order-action-status" class="order-action-status" role="status"></p>
           <div id="order-list" class="order-list"></div>
           <nav id="order-pagination" class="order-pagination" aria-label="订单分页" hidden>
-            <button id="order-previous-page" class="icon-button" type="button" title="上一页" aria-label="上一页">&#8592;</button>
+            <button id="order-previous-page" class="icon-button" type="button" title="上一页" aria-label="上一页">←</button>
             <span id="order-page-info" class="order-page-info" aria-live="polite"></span>
-            <button id="order-next-page" class="icon-button" type="button" title="下一页" aria-label="下一页">&#8594;</button>
+            <button id="order-next-page" class="icon-button" type="button" title="下一页" aria-label="下一页">→</button>
           </nav>
           <p id="orders-empty" class="orders-empty" hidden>未查询到订单。</p>
+          <button id="configure-orders" class="secondary-button" type="button" hidden>打开订单配置</button>
           <button id="retry-orders" class="secondary-button" type="button" hidden>重新查询</button>
           <div id="captcha-panel" class="captcha-panel" hidden>
             <img id="captcha-image" alt="订单验证码" />
-            <input id="captcha-code" type="text" inputmode="text" autocomplete="off" placeholder="输入验证码" aria-label="验证码" />
-            <div class="captcha-actions"><button id="refresh-captcha" class="icon-button" title="刷新验证码" aria-label="刷新验证码">&#8635;</button><button id="verify-captcha" class="primary-button">验证</button></div>
+            <label class="captcha-field" for="captcha-code"><span>验证码</span><input id="captcha-code" type="text" inputmode="text" autocomplete="off" placeholder="例如 A7K9" /></label>
+            <div class="captcha-actions"><button id="refresh-captcha" class="icon-button" title="刷新验证码" aria-label="刷新验证码">↻</button><button id="verify-captcha" class="primary-button">验证并查询</button></div>
             <p id="captcha-status" class="captcha-status" role="status"></p>
           </div>
           <button id="start-captcha" class="primary-button">完成人机验证</button>
         </section>
         <section id="settings" class="settings" role="tabpanel" aria-labelledby="products-tab">
-          <p class="section-label">SETTINGS</p>
+          <div class="section-heading">
+            <h2>商品整理</h2>
+            <p id="product-settings-status" class="product-settings-status" role="status"></p>
+          </div>
           <label class="setting-field product-sort-field" for="product-sort-mode">
-            <span>商品排序</span>
+            <span>排序方式</span>
             <select id="product-sort-mode">
               <option value="price-asc">价格从低到高</option>
               <option value="price-desc">价格从高到低</option>
@@ -65,32 +79,37 @@
             </select>
           </label>
           <div class="setting-row">
-            <div><h2>隐藏缺货商品</h2><p>仅显示当前可购买商品</p></div>
+            <div><h3>隐藏缺货</h3><p>只保留可购买商品</p></div>
             <label class="switch" title="隐藏缺货商品">
               <input id="hide-sold-out-toggle" type="checkbox" aria-label="隐藏缺货商品" />
               <span class="switch-track"></span>
             </label>
           </div>
-          <p id="product-settings-status" class="product-settings-status" role="status"></p>
-          <form id="order-settings-form" class="order-settings-form">
-            <label class="setting-field" for="order-contact-input">
-              <span>联系方式</span>
-              <input id="order-contact-input" type="text" autocomplete="username" placeholder="邮箱或手机号" />
-            </label>
-            <label class="setting-field" for="order-password-input">
-              <span>安全密码</span>
-              <input id="order-password-input" type="password" autocomplete="current-password" maxlength="128" placeholder="可留空，用于读取订单卡密" />
-            </label>
-            <label class="checkbox-row" for="remember-order-password">
-              <input id="remember-order-password" type="checkbox" />
-              <span>在此设备上长期记住安全密码</span>
-            </label>
-            <p class="privacy-hint">未勾选时，安全密码将在退出浏览器后清除。</p>
-            <div class="order-settings-actions">
-              <button id="save-order-settings" class="primary-button" type="submit">保存订单配置</button>
-              <p id="order-settings-status" class="order-settings-status" role="status"></p>
-            </div>
-          </form>
+          <details id="order-settings-disclosure" class="settings-disclosure">
+            <summary>
+              <span><strong>订单自动填写</strong><small id="order-config-summary">未配置</small></span>
+              <span class="disclosure-chevron" aria-hidden="true">⌄</span>
+            </summary>
+            <form id="order-settings-form" class="order-settings-form">
+              <label class="setting-field" for="order-contact-input">
+                <span>联系方式</span>
+                <input id="order-contact-input" type="text" autocomplete="username" placeholder="name@example.com 或手机号" aria-describedby="order-settings-status" />
+              </label>
+              <label class="setting-field" for="order-password-input">
+                <span>安全密码 <small>可选</small></span>
+                <input id="order-password-input" type="password" autocomplete="current-password" maxlength="128" placeholder="未设置" />
+              </label>
+              <label class="checkbox-row" for="remember-order-password">
+                <input id="remember-order-password" type="checkbox" />
+                <span>在此设备上长期记住密码</span>
+              </label>
+              <p class="privacy-hint">关闭后，密码会在退出浏览器时清除。</p>
+              <div class="order-settings-actions">
+                <button id="save-order-settings" class="primary-button" type="submit">保存配置</button>
+                <p id="order-settings-status" class="order-settings-status" role="status"></p>
+              </div>
+            </form>
+          </details>
         </section>
       </div>
     </main>
