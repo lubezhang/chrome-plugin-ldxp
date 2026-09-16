@@ -1,0 +1,4 @@
+interface:
+  display_name: "Release Chrome Extension"
+  short_description: "Version, package, changelog, and GitHub tag"
+  default_prompt: "Prepare this Chrome extension release: update the manifest version, build and verify the package, generate an English changelog, then create and push the GitHub release tag after confirmation."
