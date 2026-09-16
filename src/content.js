@@ -1,6 +1,9 @@
 const TARGET_SHOP_TOKEN = "2VWX76A4";
 const FILTER_KEY = "hideSoldOutProducts";
 const SORT_KEY = "productSortMode";
+const PRODUCT_LAYOUT_STYLE_ID = "wzyp-product-list-layout";
+const PRODUCT_GRID_CLASS = "wzyp-product-grid";
+const PRODUCT_GRID_SHELL_CLASS = "wzyp-product-grid-shell";
 const hidden = new Map();
 const originalOrders = new WeakMap();
 let filterEnabled = true;
@@ -17,11 +20,71 @@ const productPrice = (card) => { const value = Number.parseFloat(normalize(card.
 
 function hideCard(card) { if (!card || hidden.has(card)) return; hidden.set(card, { value: card.style.getPropertyValue("display"), priority: card.style.getPropertyPriority("display") }); card.style.setProperty("display", "none", "important"); }
 function restoreCards() { hidden.forEach((style, card) => { if (!card.isConnected) return; card.style.setProperty("display", style.value, style.priority); if (!style.value) card.style.removeProperty("display"); }); hidden.clear(); }
+function enableProductLayout() {
+  if (!targetShop() || document.getElementById(PRODUCT_LAYOUT_STYLE_ID)) return;
+  const style = document.createElement("style");
+  style.id = PRODUCT_LAYOUT_STYLE_ID;
+  style.textContent = `
+    .${PRODUCT_GRID_SHELL_CLASS} {
+      margin-inline: 0 !important;
+      max-width: 100% !important;
+      width: 100% !important;
+    }
+    .${PRODUCT_GRID_CLASS} {
+      align-items: stretch !important;
+      box-sizing: border-box !important;
+      display: grid !important;
+      gap: 8px !important;
+      grid-auto-flow: row !important;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 188px), 1fr)) !important;
+      height: auto !important;
+      margin: 0 !important;
+      max-width: 100% !important;
+      width: 100% !important;
+    }
+    .${PRODUCT_GRID_CLASS} > .goods_item,
+    .${PRODUCT_GRID_CLASS} > .goods-item {
+      display: flex !important;
+      float: none !important;
+      height: auto !important;
+      inset: auto !important;
+      margin: 0 !important;
+      min-width: 0 !important;
+      position: relative !important;
+      transform: none !important;
+      width: auto !important;
+    }
+    .${PRODUCT_GRID_CLASS} > .goods_item .image,
+    .${PRODUCT_GRID_CLASS} > .goods_item .goods-item-img,
+    .${PRODUCT_GRID_CLASS} > .goods-item .image,
+    .${PRODUCT_GRID_CLASS} > .goods-item .goods-item-img {
+      display: none !important;
+    }
+    .${PRODUCT_GRID_CLASS} > .goods_item .info,
+    .${PRODUCT_GRID_CLASS} > .goods-item .info {
+      display: flex !important;
+      flex: 1 1 auto !important;
+      flex-direction: column !important;
+      min-width: 0 !important;
+    }
+    .${PRODUCT_GRID_CLASS} > .goods_item .subinfo,
+    .${PRODUCT_GRID_CLASS} > .goods-item .subinfo {
+      margin-top: auto !important;
+    }
+    @media (max-width: 40rem) {
+      .${PRODUCT_GRID_CLASS} {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+    }
+  `;
+  document.head.append(style);
+}
 function applyProducts() {
   if (!targetShop()) return;
+  enableProductLayout();
   if (filterEnabled) productCards().filter(soldOut).forEach(hideCard); else restoreCards();
   const groups = new Map(); productCards().forEach((card) => { const cards = groups.get(card.parentElement) || []; cards.push(card); groups.set(card.parentElement, cards); });
-  groups.forEach((cards, parent) => { if (cards.length < 2) return; const saved = originalOrders.get(parent) || []; cards.forEach((card) => { if (!saved.includes(card)) saved.push(card); }); originalOrders.set(parent, saved); const index = new Map(saved.map((card, position) => [card, position])); const ordered = sortMode === "default" ? [...cards].sort((a, b) => index.get(a) - index.get(b)) : [...cards].sort((a, b) => (sortMode === "price-desc" ? productPrice(b) - productPrice(a) : productPrice(a) - productPrice(b)) || index.get(a) - index.get(b)); if (ordered.some((card, position) => card !== cards[position])) ordered.forEach((card) => parent.append(card)); });
+  groups.forEach((cards, parent) => { parent.classList.add(PRODUCT_GRID_CLASS); parent.closest(".goods_box")?.classList.add(PRODUCT_GRID_SHELL_CLASS); if (cards.length < 2) return; const saved = originalOrders.get(parent) || []; cards.forEach((card) => { if (!saved.includes(card)) saved.push(card); }); originalOrders.set(parent, saved); const index = new Map(saved.map((card, position) => [card, position])); const ordered = sortMode === "default" ? [...cards].sort((a, b) => index.get(a) - index.get(b)) : [...cards].sort((a, b) => (sortMode === "price-desc" ? productPrice(b) - productPrice(a) : productPrice(a) - productPrice(b)) || index.get(a) - index.get(b)); if (ordered.some((card, position) => card !== cards[position])) ordered.forEach((card) => parent.append(card)); });
 }
 function productState() { return { supported: targetShop(), total: productCards().length, hidden: [...hidden].filter(([card]) => card.isConnected).length, filterEnabled, sortMode }; }
 
