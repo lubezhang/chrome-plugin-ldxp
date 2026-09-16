@@ -1,0 +1,4164 @@
+{
+  "version": "2.17",
+  "children": [
+    {
+      "type": "frame",
+      "id": "W5HJd",
+      "x": 0,
+      "y": 0,
+      "name": "设计系统 · 链动小铺助手",
+      "clip": true,
+      "width": 1280,
+      "height": 780,
+      "fill": "$canvas",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "aYtda",
+          "name": "设计系统标题区",
+          "width": "fill_container",
+          "height": 116,
+          "fill": "$ink",
+          "padding": [
+            28,
+            36
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "c1B1e",
+              "name": "标题文字组",
+              "layout": "vertical",
+              "gap": 6,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Wmp5s",
+                  "name": "设计系统标题",
+                  "fill": "#FFFFFF",
+                  "content": "链动小铺助手 · UI System",
+                  "fontFamily": "$font-ui",
+                  "fontSize": 26,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "b7aGHn",
+                  "name": "设计系统说明",
+                  "fill": "#AFC3BE",
+                  "content": "Chrome Extension / v1.1 / Compact Utility",
+                  "fontFamily": "$font-mono",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ZQIi3",
+              "name": "版本标签",
+              "fill": "#3B302C",
+              "cornerRadius": 4,
+              "stroke": "#665650",
+              "strokeWidth": 1,
+              "gap": 8,
+              "padding": [
+                8,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "ellipse",
+                  "id": "Z5slv",
+                  "name": "在线状态点",
+                  "fill": "#4ADE80",
+                  "width": 8,
+                  "height": 8
+                },
+                {
+                  "type": "text",
+                  "id": "cQiCH",
+                  "name": "版本标签文字",
+                  "fill": "#F3D7CF",
+                  "content": "READY FOR BUILD",
+                  "fontFamily": "$font-mono",
+                  "fontSize": 11,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "rq4d4",
+          "name": "设计系统内容",
+          "width": "fill_container",
+          "height": "fill_container",
+          "gap": 32,
+          "padding": [
+            28,
+            36,
+            32,
+            36
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "qF5zh",
+              "name": "基础规范",
+              "width": 360,
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "b9HiE",
+                  "name": "视觉基础 标题",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "kyfcq",
+                      "name": "视觉基础 序号",
+                      "fill": "$accent",
+                      "content": "01 / FOUNDATION",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 10,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "f9RsIS",
+                      "name": "视觉基础",
+                      "fill": "$ink",
+                      "content": "视觉基础",
+                      "fontFamily": "$font-ui",
+                      "fontSize": 18,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ZtCp7",
+                  "name": "颜色系统",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "jqXTd",
+                      "name": "品牌主色",
+                      "width": "fill_container",
+                      "gap": 12,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": 4,
+                          "id": "cORb8",
+                          "name": "品牌主色 色块",
+                          "fill": "#F15A37",
+                          "width": 36,
+                          "height": 36
+                        },
+                        {
+                          "type": "frame",
+                          "id": "gsdNi",
+                          "name": "品牌主色 信息",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 2,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "a3ZQ0",
+                              "name": "品牌主色 名称",
+                              "fill": "$ink",
+                              "content": "品牌主色",
+                              "fontFamily": "$font-ui",
+                              "fontSize": 13,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "r95nMQ",
+                              "name": "品牌主色 色值",
+                              "fill": "$ink-muted",
+                              "content": "#F15A37  ·  Linked Orange",
+                              "fontFamily": "$font-mono",
+                              "fontSize": 10,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "P0cjI",
+                      "name": "强调提示",
+                      "width": "fill_container",
+                      "gap": 12,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": 4,
+                          "id": "qOwL8",
+                          "name": "强调提示 色块",
+                          "fill": "#B86B08",
+                          "width": 36,
+                          "height": 36
+                        },
+                        {
+                          "type": "frame",
+                          "id": "h13fEj",
+                          "name": "强调提示 信息",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 2,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "JOLdx",
+                              "name": "强调提示 名称",
+                              "fill": "$ink",
+                              "content": "强调提示",
+                              "fontFamily": "$font-ui",
+                              "fontSize": 13,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "wHHTc",
+                              "name": "强调提示 色值",
+                              "fill": "$ink-muted",
+                              "content": "#B86B08  ·  Amber 700",
+                              "fontFamily": "$font-mono",
+                              "fontSize": 10,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "TBxtX",
+                      "name": "主文本",
+                      "width": "fill_container",
+                      "gap": 12,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": 4,
+                          "id": "zjGu5",
+                          "name": "主文本 色块",
+                          "fill": "#2A211E",
+                          "width": 36,
+                          "height": 36
+                        },
+                        {
+                          "type": "frame",
+                          "id": "sYoug",
+                          "name": "主文本 信息",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 2,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "VAjc8",
+                              "name": "主文本 名称",
+                              "fill": "$ink",
+                              "content": "主文本",
+                              "fontFamily": "$font-ui",
+                              "fontSize": 13,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "cmRZ4",
+                              "name": "主文本 色值",
+                              "fill": "$ink-muted",
+                              "content": "#2A211E  ·  Ink 950",
+                              "fontFamily": "$font-mono",
+                              "fontSize": 10,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Au1zk",
+                      "name": "浅底色",
+                      "width": "fill_container",
+                      "gap": 12,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": 4,
+                          "id": "x1jfQ",
+                          "name": "浅底色 色块",
+                          "fill": "#F2F1F0",
+                          "width": 36,
+                          "height": 36
+                        },
+                        {
+                          "type": "frame",
+                          "id": "txXHj",
+                          "name": "浅底色 信息",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 2,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "PR7RL",
+                              "name": "浅底色 名称",
+                              "fill": "$ink",
+                              "content": "浅底色",
+                              "fontFamily": "$font-ui",
+                              "fontSize": 13,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "IGwhb",
+                              "name": "浅底色 色值",
+                              "fill": "$ink-muted",
+                              "content": "#F2F1F0  ·  Fog 100",
+                              "fontFamily": "$font-mono",
+                              "fontSize": 10,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "pEDSL",
+                      "name": "危险状态",
+                      "width": "fill_container",
+                      "gap": 12,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": 4,
+                          "id": "HBku6",
+                          "name": "危险状态 色块",
+                          "fill": "#B42318",
+                          "width": 36,
+                          "height": 36
+                        },
+                        {
+                          "type": "frame",
+                          "id": "NrWIy",
+                          "name": "危险状态 信息",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 2,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "Sfb2n",
+                              "name": "危险状态 名称",
+                              "fill": "$ink",
+                              "content": "危险状态",
+                              "fontFamily": "$font-ui",
+                              "fontSize": 13,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "Cgw8g",
+                              "name": "危险状态 色值",
+                              "fill": "$ink-muted",
+                              "content": "#B42318  ·  Red 700",
+                              "fontFamily": "$font-mono",
+                              "fontSize": 10,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "oKi8H",
+                  "name": "字体系统",
+                  "width": "fill_container",
+                  "stroke": "$line",
+                  "strokeWidth": {
+                    "top": 1
+                  },
+                  "layout": "vertical",
+                  "gap": 9,
+                  "padding": [
+                    16,
+                    0,
+                    0,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "wS43X",
+                      "name": "标题字样",
+                      "fill": "$ink",
+                      "content": "订单查询",
+                      "fontFamily": "$font-ui",
+                      "fontSize": 22,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "oRL9u",
+                      "name": "正文示例",
+                      "fill": "$ink-muted",
+                      "content": "清晰、克制，服务于高频操作",
+                      "fontFamily": "$font-ui",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "r2Hift",
+                      "name": "等宽示例",
+                      "fill": "$ink",
+                      "content": "NO. 202609160018",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "n60vz9",
+                  "name": "间距刻度",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "alignItems": "end",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "q5gEW",
+                      "name": "4px 间距",
+                      "layout": "vertical",
+                      "gap": 5,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "id": "YKMra",
+                          "name": "4px 图形",
+                          "fill": "$accent-soft",
+                          "width": 24,
+                          "height": 12,
+                          "stroke": "$accent",
+                          "strokeWidth": 1
+                        },
+                        {
+                          "type": "text",
+                          "id": "GjmQx",
+                          "name": "4px 标签",
+                          "fill": "$ink-muted",
+                          "content": "4",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 9,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "PvEGs",
+                      "name": "8px 间距",
+                      "layout": "vertical",
+                      "gap": 5,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "id": "wF297",
+                          "name": "8px 图形",
+                          "fill": "$accent-soft",
+                          "width": 24,
+                          "height": 20,
+                          "stroke": "$accent",
+                          "strokeWidth": 1
+                        },
+                        {
+                          "type": "text",
+                          "id": "yXAdX",
+                          "name": "8px 标签",
+                          "fill": "$ink-muted",
+                          "content": "8",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 9,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "VNJNm",
+                      "name": "12px 间距",
+                      "layout": "vertical",
+                      "gap": 5,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "id": "b3HInE",
+                          "name": "12px 图形",
+                          "fill": "$accent-soft",
+                          "width": 24,
+                          "height": 28,
+                          "stroke": "$accent",
+                          "strokeWidth": 1
+                        },
+                        {
+                          "type": "text",
+                          "id": "MqD9e",
+                          "name": "12px 标签",
+                          "fill": "$ink-muted",
+                          "content": "12",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 9,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "irS3r",
+                      "name": "16px 间距",
+                      "layout": "vertical",
+                      "gap": 5,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "id": "Y72Wl",
+                          "name": "16px 图形",
+                          "fill": "$accent-soft",
+                          "width": 24,
+                          "height": 36,
+                          "stroke": "$accent",
+                          "strokeWidth": 1
+                        },
+                        {
+                          "type": "text",
+                          "id": "z3fKM2",
+                          "name": "16px 标签",
+                          "fill": "$ink-muted",
+                          "content": "16",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 9,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "j7zes",
+                      "name": "24px 间距",
+                      "layout": "vertical",
+                      "gap": 5,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "id": "ZJeZD",
+                          "name": "24px 图形",
+                          "fill": "$accent-soft",
+                          "width": 24,
+                          "height": 52,
+                          "stroke": "$accent",
+                          "strokeWidth": 1
+                        },
+                        {
+                          "type": "text",
+                          "id": "PqV1Y",
+                          "name": "24px 标签",
+                          "fill": "$ink-muted",
+                          "content": "24",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 9,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "PohNy",
+                      "name": "32px 间距",
+                      "layout": "vertical",
+                      "gap": 5,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "id": "Fo6HY",
+                          "name": "32px 图形",
+                          "fill": "$accent-soft",
+                          "width": 24,
+                          "height": 68,
+                          "stroke": "$accent",
+                          "strokeWidth": 1
+                        },
+                        {
+                          "type": "text",
+                          "id": "qGHkj",
+                          "name": "32px 标签",
+                          "fill": "$ink-muted",
+                          "content": "32",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 9,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Ctx9U",
+              "name": "核心组件",
+              "width": 390,
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": 20,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Z2nN3S",
+                  "name": "核心控件 标题",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "O3ktKu",
+                      "name": "核心控件 序号",
+                      "fill": "$accent",
+                      "content": "02 / CONTROLS",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 10,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "P6icH",
+                      "name": "核心控件",
+                      "fill": "$ink",
+                      "content": "核心控件",
+                      "fontFamily": "$font-ui",
+                      "fontSize": 18,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "g9q9DD",
+                  "name": "组件/主按钮",
+                  "reusable": true,
+                  "width": 156,
+                  "height": 44,
+                  "fill": "$accent",
+                  "cornerRadius": 6,
+                  "gap": 8,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "PktZN",
+                      "name": "主按钮图标",
+                      "width": 17,
+                      "height": 17,
+                      "icon": "shield-check",
+                      "library": "lucide",
+                      "fill": "#FFFFFF"
+                    },
+                    {
+                      "type": "text",
+                      "id": "EUBtu",
+                      "name": "主按钮文字",
+                      "fill": "#FFFFFF",
+                      "content": "验证并查询",
+                      "fontFamily": "$font-ui",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "qEyuS",
+                  "name": "组件/次按钮",
+                  "reusable": true,
+                  "width": 128,
+                  "height": 40,
+                  "fill": "$surface",
+                  "cornerRadius": 6,
+                  "stroke": "$line-strong",
+                  "strokeWidth": 1,
+                  "gap": 8,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "LzV4m",
+                      "name": "次按钮图标",
+                      "width": 16,
+                      "height": 16,
+                      "icon": "key-round",
+                      "library": "lucide",
+                      "fill": "$ink"
+                    },
+                    {
+                      "type": "text",
+                      "id": "eycxJ",
+                      "name": "次按钮文字",
+                      "fill": "$ink",
+                      "content": "读取卡密",
+                      "fontFamily": "$font-ui",
+                      "fontSize": 12,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ItdPY",
+                  "name": "组件/输入框",
+                  "reusable": true,
+                  "width": 318,
+                  "layout": "vertical",
+                  "gap": 7,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "kNann",
+                      "name": "输入框标签",
+                      "fill": "$ink-muted",
+                      "content": "联系方式",
+                      "fontFamily": "$font-ui",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "DcsWg",
+                      "name": "输入框容器",
+                      "width": "fill_container",
+                      "height": 44,
+                      "fill": "$surface",
+                      "cornerRadius": 6,
+                      "stroke": "$line-strong",
+                      "strokeWidth": 1,
+                      "gap": 10,
+                      "padding": [
+                        0,
+                        13
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "nWMOK",
+                          "name": "输入框图标",
+                          "width": 17,
+                          "height": 17,
+                          "icon": "at-sign",
+                          "library": "lucide",
+                          "fill": "$ink-muted"
+                        },
+                        {
+                          "type": "text",
+                          "id": "A4f8r",
+                          "name": "输入框占位文字",
+                          "fill": "$ink-muted",
+                          "content": "name@example.com",
+                          "fontFamily": "$font-ui",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "g801k9",
+                  "name": "组件/开关行",
+                  "reusable": true,
+                  "width": 318,
+                  "height": 60,
+                  "stroke": "$line",
+                  "strokeWidth": {
+                    "bottom": 1
+                  },
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "dfHQn",
+                      "name": "开关说明",
+                      "layout": "vertical",
+                      "gap": 3,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "P4nZN",
+                          "name": "开关标题",
+                          "fill": "$ink",
+                          "content": "隐藏缺货商品",
+                          "fontFamily": "$font-ui",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "NKwZf",
+                          "name": "开关描述",
+                          "fill": "$ink-muted",
+                          "content": "只保留当前可购买商品",
+                          "fontFamily": "$font-ui",
+                          "fontSize": 11,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "QJyzC",
+                      "name": "开关/开启",
+                      "width": 42,
+                      "height": 24,
+                      "fill": "$accent",
+                      "cornerRadius": 12,
+                      "padding": 3,
+                      "justifyContent": "end",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "ellipse",
+                          "id": "VILMg",
+                          "name": "开关滑块",
+                          "fill": "#FFFFFF",
+                          "width": 18,
+                          "height": 18,
+                          "effect": {
+                            "type": "shadow",
+                            "shadowType": "outer",
+                            "color": "#13232133",
+                            "offset": {
+                              "x": 0,
+                              "y": 1
+                            },
+                            "blur": 2
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "i6TEub",
+              "name": "状态与模式",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": 20,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Ya67l",
+                  "name": "状态与模式 标题",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "IPXFt",
+                      "name": "状态与模式 序号",
+                      "fill": "$accent",
+                      "content": "03 / PATTERNS",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 10,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Yj4Ht",
+                      "name": "状态与模式",
+                      "fill": "$ink",
+                      "content": "状态与模式",
+                      "fontFamily": "$font-ui",
+                      "fontSize": 18,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "xeKp6",
+                  "name": "订单状态标签",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "t4eCQ",
+                      "name": "标签/已付款",
+                      "fill": "$success-soft",
+                      "cornerRadius": 4,
+                      "padding": [
+                        5,
+                        9
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "I2YPR",
+                          "name": "已付款 文字",
+                          "fill": "$success",
+                          "content": "已付款",
+                          "fontFamily": "$font-ui",
+                          "fontSize": 10,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "UEDFp",
+                      "name": "标签/未付款",
+                      "fill": "$amber-soft",
+                      "cornerRadius": 4,
+                      "padding": [
+                        5,
+                        9
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "S63q8Y",
+                          "name": "未付款 文字",
+                          "fill": "$amber",
+                          "content": "未付款",
+                          "fontFamily": "$font-ui",
+                          "fontSize": 10,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "i1QxqP",
+                      "name": "标签/已退款",
+                      "fill": "$danger-soft",
+                      "cornerRadius": 4,
+                      "padding": [
+                        5,
+                        9
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "kQfPO",
+                          "name": "已退款 文字",
+                          "fill": "$danger",
+                          "content": "已退款",
+                          "fontFamily": "$font-ui",
+                          "fontSize": 10,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "N4rKn",
+                      "name": "标签/已关闭",
+                      "fill": "$surface-subtle",
+                      "cornerRadius": 4,
+                      "padding": [
+                        5,
+                        9
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "M630GR",
+                          "name": "已关闭 文字",
+                          "fill": "$ink-muted",
+                          "content": "已关闭",
+                          "fontFamily": "$font-ui",
+                          "fontSize": 10,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "RgMBv",
+                  "name": "安全提示模式",
+                  "width": "fill_container",
+                  "fill": "$amber-soft",
+                  "cornerRadius": 6,
+                  "stroke": "#F0D28C",
+                  "strokeWidth": 1,
+                  "gap": 12,
+                  "padding": 14,
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "w0uod",
+                      "name": "安全提示图标",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "shield-alert",
+                      "library": "lucide",
+                      "fill": "$amber"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Uxqke",
+                      "name": "安全提示文案",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 3,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "meicb",
+                          "name": "安全提示标题",
+                          "fill": "$ink",
+                          "content": "密码默认仅在本次会话保留",
+                          "fontFamily": "$font-ui",
+                          "fontSize": 12,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "C3Lun",
+                          "name": "安全提示正文",
+                          "fill": "$ink-muted",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "关闭浏览器后自动清除，长期保存需明确授权。",
+                          "lineHeight": 1.5,
+                          "fontFamily": "$font-ui",
+                          "fontSize": 11,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "aK1R6",
+                  "name": "图标按钮组",
+                  "width": "fill_container",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "hNsi6",
+                      "name": "图标按钮/刷新",
+                      "width": 40,
+                      "height": 40,
+                      "fill": "$surface",
+                      "cornerRadius": 6,
+                      "stroke": "$line",
+                      "strokeWidth": 1,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "fWSr5",
+                          "name": "刷新 图标",
+                          "width": 17,
+                          "height": 17,
+                          "icon": "refresh-cw",
+                          "library": "lucide",
+                          "fill": "$ink"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "xUtrt",
+                      "name": "图标按钮/搜索",
+                      "width": 40,
+                      "height": 40,
+                      "fill": "$surface",
+                      "cornerRadius": 6,
+                      "stroke": "$line",
+                      "strokeWidth": 1,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "iXM69",
+                          "name": "搜索 图标",
+                          "width": 17,
+                          "height": 17,
+                          "icon": "search",
+                          "library": "lucide",
+                          "fill": "$ink"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "pdM4y",
+                      "name": "图标按钮/打开详情",
+                      "width": 40,
+                      "height": 40,
+                      "fill": "$surface",
+                      "cornerRadius": 6,
+                      "stroke": "$line",
+                      "strokeWidth": 1,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "FiARB",
+                          "name": "打开详情 图标",
+                          "width": 17,
+                          "height": 17,
+                          "icon": "external-link",
+                          "library": "lucide",
+                          "fill": "$ink"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Sruky",
+                      "name": "图标按钮/复制",
+                      "width": 40,
+                      "height": 40,
+                      "fill": "$surface",
+                      "cornerRadius": 6,
+                      "stroke": "$line",
+                      "strokeWidth": 1,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "rAcDR",
+                          "name": "复制 图标",
+                          "width": 17,
+                          "height": 17,
+                          "icon": "copy",
+                          "library": "lucide",
+                          "fill": "$ink"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "N0HziU",
+                      "name": "图标按钮/显示",
+                      "width": 40,
+                      "height": 40,
+                      "fill": "$surface",
+                      "cornerRadius": 6,
+                      "stroke": "$line",
+                      "strokeWidth": 1,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "PzT6s",
+                          "name": "显示 图标",
+                          "width": 17,
+                          "height": 17,
+                          "icon": "eye",
+                          "library": "lucide",
+                          "fill": "$ink"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "PV4r8",
+                  "name": "插件布局解剖",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 254,
+                  "fill": "$surface",
+                  "cornerRadius": 6,
+                  "stroke": "$line",
+                  "strokeWidth": 1,
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "W81T4h",
+                      "name": "布局/品牌头部",
+                      "width": "fill_container",
+                      "height": 52,
+                      "fill": "$ink",
+                      "gap": 10,
+                      "padding": [
+                        0,
+                        14
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "kyrn6",
+                          "name": "布局/品牌图标",
+                          "width": 24,
+                          "height": 24,
+                          "fill": "$accent",
+                          "cornerRadius": 5,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "NHPlX",
+                              "name": "布局/品牌链接符号",
+                              "width": 14,
+                              "height": 14,
+                              "icon": "link-2",
+                              "library": "lucide",
+                              "fill": "#FFFFFF"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "JIgX9",
+                          "name": "布局/品牌名",
+                          "fill": "#FFFFFF",
+                          "content": "链动小铺助手",
+                          "fontFamily": "$font-ui",
+                          "fontSize": 12,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "I33d1K",
+                      "name": "布局/页签区",
+                      "width": "fill_container",
+                      "height": 38,
+                      "fill": "$surface",
+                      "stroke": "$line",
+                      "strokeWidth": {
+                        "bottom": 1
+                      },
+                      "gap": 22,
+                      "padding": [
+                        0,
+                        14
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "AnQOy",
+                          "name": "布局/主页签",
+                          "fill": "$accent",
+                          "content": "01  商品整理",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 9,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "wpvQy",
+                          "name": "布局/次页签",
+                          "fill": "$ink-muted",
+                          "content": "02  订单查询",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 9,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "jwE2F",
+                      "name": "布局/内容区",
+                      "width": "fill_container",
+                      "height": "fill_container",
+                      "fill": "$surface",
+                      "layout": "vertical",
+                      "gap": 10,
+                      "padding": 14,
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": 3,
+                          "id": "F5L6G",
+                          "name": "布局/标题骨架",
+                          "fill": "$ink",
+                          "width": 110,
+                          "height": 12
+                        },
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": 4,
+                          "id": "IGIFX",
+                          "name": "布局/控件骨架一",
+                          "fill": "$surface-subtle",
+                          "width": "fill_container",
+                          "height": 36
+                        },
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": 4,
+                          "id": "znWWv",
+                          "name": "布局/控件骨架二",
+                          "fill": "$surface-subtle",
+                          "width": "fill_container",
+                          "height": 36
+                        },
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": 4,
+                          "id": "h3thY",
+                          "name": "布局/主要操作骨架",
+                          "fill": "$accent",
+                          "width": 128,
+                          "height": 36
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "yrBl3",
+      "x": 0,
+      "y": 860,
+      "name": "页面 01 · 商品整理",
+      "clip": true,
+      "width": 380,
+      "height": 600,
+      "fill": "$surface",
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#13232122",
+        "offset": {
+          "x": 0,
+          "y": 12
+        },
+        "blur": 28
+      },
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "AYrCR",
+          "name": "商品整理/品牌栏",
+          "width": "fill_container",
+          "height": 74,
+          "fill": "$ink",
+          "padding": [
+            0,
+            20
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "MdglQ",
+              "name": "商品整理/品牌",
+              "gap": 11,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "M8qRmM",
+                  "name": "商品整理/品牌图标",
+                  "width": 34,
+                  "height": 34,
+                  "fill": "$accent",
+                  "cornerRadius": 7,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "RHeEY",
+                      "name": "商品整理/品牌链接符号",
+                      "width": 20,
+                      "height": 20,
+                      "icon": "link-2",
+                      "library": "lucide",
+                      "fill": "#FFFFFF"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "wKRu3",
+                  "name": "商品整理/品牌文案",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "A9KuK",
+                      "name": "商品整理/品牌名称",
+                      "fill": "#FFFFFF",
+                      "content": "链动小铺",
+                      "fontFamily": "$font-ui",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "xKMWN",
+                      "name": "商品整理/当前站点",
+                      "fill": "#AFC3BE",
+                      "content": "wzyp.cn · 已连接",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 9,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "uR5pX",
+              "name": "商品整理/更多按钮",
+              "width": 36,
+              "height": 36,
+              "fill": "#243B38",
+              "cornerRadius": 6,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "vyGCP",
+                  "name": "商品整理/更多图标",
+                  "width": 18,
+                  "height": 18,
+                  "icon": "ellipsis",
+                  "library": "lucide",
+                  "fill": "#DCE9E6"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "yFZ0U",
+          "name": "商品整理/主导航",
+          "width": "fill_container",
+          "height": 48,
+          "fill": "$surface-subtle",
+          "stroke": "$line",
+          "strokeWidth": {
+            "bottom": 1
+          },
+          "gap": 4,
+          "padding": [
+            5,
+            8
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "cxuPv",
+              "name": "商品整理/商品页签",
+              "width": "fill_container",
+              "height": "fill_container",
+              "fill": "$surface",
+              "cornerRadius": 5,
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#13232118",
+                "offset": {
+                  "x": 0,
+                  "y": 1
+                },
+                "blur": 3
+              },
+              "gap": 7,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "s0ldTe",
+                  "name": "商品整理/商品编号",
+                  "fill": "$accent",
+                  "content": "01",
+                  "fontFamily": "$font-mono",
+                  "fontSize": 9,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "n5C3C",
+                  "name": "商品整理/商品页签文字",
+                  "fill": "$ink",
+                  "content": "商品整理",
+                  "fontFamily": "$font-ui",
+                  "fontSize": 12,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "R4OJS",
+              "name": "商品整理/订单页签",
+              "width": "fill_container",
+              "height": "fill_container",
+              "cornerRadius": 5,
+              "gap": 7,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "do8j2",
+                  "name": "商品整理/订单编号",
+                  "fill": "$ink-muted",
+                  "content": "02",
+                  "fontFamily": "$font-mono",
+                  "fontSize": 9,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "rxdjx",
+                  "name": "商品整理/订单页签文字",
+                  "fill": "$ink-muted",
+                  "content": "订单查询",
+                  "fontFamily": "$font-ui",
+                  "fontSize": 12,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "P0qkxI",
+          "name": "商品整理/内容",
+          "width": "fill_container",
+          "height": "fill_container",
+          "fill": "$surface",
+          "layout": "vertical",
+          "gap": 20,
+          "padding": [
+            22,
+            20,
+            18,
+            20
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "M3KZM",
+              "name": "商品整理/标题行",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "PYMgF",
+                  "name": "商品整理/标题文案",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ZgxOS",
+                      "name": "商品整理/页面标题",
+                      "fill": "$ink",
+                      "content": "整理当前货架",
+                      "fontFamily": "$font-ui",
+                      "fontSize": 22,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "JcESg",
+                      "name": "商品整理/商品统计",
+                      "fill": "$ink-muted",
+                      "content": "28 件商品 · 6 件缺货",
+                      "fontFamily": "$font-ui",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "CjkkE",
+                  "name": "商品整理/已应用标签",
+                  "fill": "$success-soft",
+                  "cornerRadius": 4,
+                  "gap": 6,
+                  "padding": [
+                    6,
+                    9
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "V3AzJF",
+                      "name": "商品整理/已应用状态点",
+                      "fill": "$success",
+                      "width": 6,
+                      "height": 6
+                    },
+                    {
+                      "type": "text",
+                      "id": "G7yVB",
+                      "name": "商品整理/已应用文字",
+                      "fill": "$success",
+                      "content": "已应用",
+                      "fontFamily": "$font-ui",
+                      "fontSize": 10,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "azcev",
+              "name": "商品整理/排序模块",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 9,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "H1wmeh",
+                  "name": "商品整理/排序标签",
+                  "fill": "$ink-muted",
+                  "content": "排序规则",
+                  "fontFamily": "$font-ui",
+                  "fontSize": 11,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "oqm7m",
+                  "name": "商品整理/排序控件",
+                  "width": "fill_container",
+                  "height": 52,
+                  "fill": "$surface",
+                  "cornerRadius": 6,
+                  "stroke": "$line-strong",
+                  "strokeWidth": 1,
+                  "padding": [
+                    0,
+                    14
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Y0fYa",
+                      "name": "商品整理/排序当前值",
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "ifZGd",
+                          "name": "商品整理/排序图标",
+                          "width": 18,
+                          "height": 18,
+                          "icon": "arrow-up-narrow-wide",
+                          "library": "lucide",
+                          "fill": "$accent"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "fx82L",
+                          "name": "商品整理/排序值文案",
+                          "layout": "vertical",
+                          "gap": 2,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "h3ivD",
+                              "name": "商品整理/排序值",
+                              "fill": "$ink",
+                              "content": "价格从低到高",
+                              "fontFamily": "$font-ui",
+                              "fontSize": 13,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "e9Ncw",
+                              "name": "商品整理/排序副文案",
+                              "fill": "$ink-muted",
+                              "content": "低价商品优先",
+                              "fontFamily": "$font-ui",
+                              "fontSize": 10,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "icon",
+                      "id": "NAOgn",
+                      "name": "商品整理/下拉图标",
+                      "width": 16,
+                      "height": 16,
+                      "icon": "chevrons-up-down",
+                      "library": "lucide",
+                      "fill": "$ink-muted"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "fETdo",
+              "type": "ref",
+              "ref": "g801k9",
+              "name": "商品整理/隐藏缺货开关",
+              "width": "fill_container",
+              "descendants": {
+                "P4nZN": {
+                  "content": "隐藏缺货商品"
+                },
+                "NKwZf": {
+                  "content": "仅显示可立即购买的商品"
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "UVe5w",
+              "name": "商品整理/同步状态",
+              "width": "fill_container",
+              "fill": "$accent-soft",
+              "cornerRadius": 6,
+              "stroke": "#FFC1AF",
+              "strokeWidth": 1,
+              "gap": 12,
+              "padding": 14,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "f7r5f",
+                  "name": "商品整理/同步图标",
+                  "width": 20,
+                  "height": 20,
+                  "icon": "scan-line",
+                  "library": "lucide",
+                  "fill": "$accent"
+                },
+                {
+                  "type": "frame",
+                  "id": "C1zR0a",
+                  "name": "商品整理/同步文案",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 3,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Jvzfp",
+                      "name": "商品整理/同步标题",
+                      "fill": "$ink",
+                      "content": "页面规则正在生效",
+                      "fontFamily": "$font-ui",
+                      "fontSize": 12,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "d361z6",
+                      "name": "商品整理/同步详情",
+                      "fill": "$ink-muted",
+                      "content": "已重新排列 22 件可售商品",
+                      "fontFamily": "$font-ui",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "MUnSc",
+              "name": "商品整理/自动填写入口",
+              "width": "fill_container",
+              "height": 64,
+              "stroke": "$line",
+              "strokeWidth": {
+                "top": 1,
+                "bottom": 1
+              },
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "uq5S8",
+                  "name": "商品整理/自动填写左侧",
+                  "gap": 11,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "K78fw",
+                      "name": "商品整理/自动填写图标底",
+                      "width": 34,
+                      "height": 34,
+                      "fill": "$surface-subtle",
+                      "cornerRadius": 5,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "YI8xx",
+                          "name": "商品整理/自动填写图标",
+                          "width": 17,
+                          "height": 17,
+                          "icon": "wand-sparkles",
+                          "library": "lucide",
+                          "fill": "$ink"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Ij6T3",
+                      "name": "商品整理/自动填写文案",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "lbeeq",
+                          "name": "商品整理/自动填写标题",
+                          "fill": "$ink",
+                          "content": "订单自动填写",
+                          "fontFamily": "$font-ui",
+                          "fontSize": 12,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "OTA5w",
+                          "name": "商品整理/自动填写状态",
+                          "fill": "$success",
+                          "content": "已配置 · 会话保存",
+                          "fontFamily": "$font-ui",
+                          "fontSize": 10,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "icon",
+                  "id": "JhiV6",
+                  "name": "商品整理/自动填写箭头",
+                  "width": 17,
+                  "height": 17,
+                  "icon": "chevron-right",
+                  "library": "lucide",
+                  "fill": "$ink-muted"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Eiyll",
+              "name": "商品整理/底部状态",
+              "width": "fill_container",
+              "height": 28,
+              "justifyContent": "space_between",
+              "alignItems": "end",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "EO7eH",
+                  "name": "商品整理/更新时间",
+                  "fill": "$ink-muted",
+                  "content": "最后同步 10:42",
+                  "fontFamily": "$font-mono",
+                  "fontSize": 9,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "wYREM",
+                  "name": "商品整理/重新应用按钮",
+                  "cornerRadius": 5,
+                  "gap": 6,
+                  "padding": [
+                    7,
+                    9
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "g9T0o",
+                      "name": "商品整理/重新应用图标",
+                      "width": 14,
+                      "height": 14,
+                      "icon": "refresh-cw",
+                      "library": "lucide",
+                      "fill": "$accent"
+                    },
+                    {
+                      "type": "text",
+                      "id": "N9dVe",
+                      "name": "商品整理/重新应用文字",
+                      "fill": "$accent",
+                      "content": "重新应用",
+                      "fontFamily": "$font-ui",
+                      "fontSize": 10,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "nrGyC",
+      "x": 428,
+      "y": 860,
+      "name": "页面 02 · 自动填写配置",
+      "clip": true,
+      "width": 380,
+      "height": 720,
+      "fill": "$surface",
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#2A211E22",
+        "offset": {
+          "x": 0,
+          "y": 12
+        },
+        "blur": 28
+      },
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "dXro0",
+          "name": "自动填写/品牌栏",
+          "width": "fill_container",
+          "height": 74,
+          "fill": "$ink",
+          "padding": [
+            0,
+            20
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "IME7h",
+              "name": "自动填写/品牌",
+              "gap": 11,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "f1viwW",
+                  "name": "自动填写/品牌图标",
+                  "width": 34,
+                  "height": 34,
+                  "fill": "$accent",
+                  "cornerRadius": 7,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "nvEJJ",
+                      "name": "自动填写/品牌链接符号",
+                      "width": 20,
+                      "height": 20,
+                      "icon": "link-2",
+                      "library": "lucide",
+                      "fill": "#FFFFFF"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "NytUo",
+                  "name": "自动填写/品牌文案",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "n9TtS",
+                      "name": "自动填写/品牌名称",
+                      "fill": "#FFFFFF",
+                      "content": "链动小铺",
+                      "fontFamily": "$font-ui",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "n2d2Tl",
+                      "name": "自动填写/当前站点",
+                      "fill": "#D8CBC7",
+                      "content": "wzyp.cn · 已连接",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 9,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "DmapZ",
+              "name": "自动填写/关闭按钮",
+              "width": 36,
+              "height": 36,
+              "fill": "#3B302C",
+              "cornerRadius": 6,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "vzNw9",
+                  "name": "自动填写/关闭图标",
+                  "width": 17,
+                  "height": 17,
+                  "icon": "x",
+                  "library": "lucide",
+                  "fill": "#F6ECE8"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "stxPK",
+          "name": "自动填写/内容",
+          "width": "fill_container",
+          "height": "fill_container",
+          "fill": "$surface",
+          "layout": "vertical",
+          "gap": 17,
+          "padding": [
+            22,
+            20,
+            20,
+            20
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "tshV3",
+              "name": "自动填写/标题区",
+              "width": "fill_container",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "GAj0D",
+                  "name": "自动填写/返回按钮",
+                  "width": 38,
+                  "height": 38,
+                  "fill": "$surface-subtle",
+                  "cornerRadius": 6,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "XKBZR",
+                      "name": "自动填写/返回图标",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "arrow-left",
+                      "library": "lucide",
+                      "fill": "$ink"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "yWEAv",
+                  "name": "自动填写/标题文案",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 3,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "W9RSej",
+                      "name": "自动填写/页面标题",
+                      "fill": "$ink",
+                      "content": "订单自动填写",
+                      "fontFamily": "$font-ui",
+                      "fontSize": 20,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "cmXXC",
+                      "name": "自动填写/页面说明",
+                      "fill": "$ink-muted",
+                      "content": "用于订单确认与订单查询",
+                      "fontFamily": "$font-ui",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "vs3oE",
+              "type": "ref",
+              "ref": "ItdPY",
+              "name": "自动填写/联系方式输入",
+              "width": "fill_container",
+              "descendants": {
+                "kNann": {
+                  "content": "联系方式"
+                },
+                "nWMOK": {
+                  "icon": "at-sign"
+                },
+                "A4f8r": {
+                  "content": "name@example.com",
+                  "fill": "$ink"
+                }
+              }
+            },
+            {
+              "id": "DjJl3",
+              "type": "ref",
+              "ref": "ItdPY",
+              "name": "自动填写/安全密码输入",
+              "width": "fill_container",
+              "descendants": {
+                "kNann": {
+                  "content": "安全密码  ·  可选"
+                },
+                "nWMOK": {
+                  "icon": "lock-keyhole"
+                },
+                "A4f8r": {
+                  "content": "••••••••••",
+                  "fill": "$ink"
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "nM3zI",
+              "name": "自动填写/保存方式",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "k8hw9",
+                  "name": "自动填写/保存方式标签",
+                  "fill": "$ink-muted",
+                  "content": "密码保存方式",
+                  "fontFamily": "$font-ui",
+                  "fontSize": 11,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "vntFy",
+                  "name": "自动填写/保存方式分段",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface-subtle",
+                  "cornerRadius": 6,
+                  "gap": 4,
+                  "padding": 4,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "WkKA0",
+                      "name": "自动填写/本次会话选项",
+                      "width": "fill_container",
+                      "height": "fill_container",
+                      "fill": "$surface",
+                      "cornerRadius": 4,
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#2A211E18",
+                        "offset": {
+                          "x": 0,
+                          "y": 1
+                        },
+                        "blur": 3
+                      },
+                      "gap": 7,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "j8jcrb",
+                          "name": "自动填写/会话图标",
+                          "width": 15,
+                          "height": 15,
+                          "icon": "timer-reset",
+                          "library": "lucide",
+                          "fill": "$accent"
+                        },
+                        {
+                          "type": "text",
+                          "id": "sSbHU",
+                          "name": "自动填写/会话文字",
+                          "fill": "$ink",
+                          "content": "仅本次会话",
+                          "fontFamily": "$font-ui",
+                          "fontSize": 11,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Yjnyu",
+                      "name": "自动填写/设备选项",
+                      "width": "fill_container",
+                      "height": "fill_container",
+                      "cornerRadius": 4,
+                      "gap": 7,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "iuqpn",
+                          "name": "自动填写/设备图标",
+                          "width": 15,
+                          "height": 15,
+                          "icon": "monitor-smartphone",
+                          "library": "lucide",
+                          "fill": "$ink-muted"
+                        },
+                        {
+                          "type": "text",
+                          "id": "e48Y8",
+                          "name": "自动填写/设备文字",
+                          "fill": "$ink-muted",
+                          "content": "此设备",
+                          "fontFamily": "$font-ui",
+                          "fontSize": 11,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "kgmog",
+              "name": "自动填写/隐私提示",
+              "width": "fill_container",
+              "fill": "$accent-soft",
+              "cornerRadius": 6,
+              "stroke": "#FFC6B5",
+              "strokeWidth": 1,
+              "gap": 11,
+              "padding": 13,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "vFYpL",
+                  "name": "自动填写/隐私图标",
+                  "width": 18,
+                  "height": 18,
+                  "icon": "shield-check",
+                  "library": "lucide",
+                  "fill": "$accent"
+                },
+                {
+                  "type": "frame",
+                  "id": "jzitU",
+                  "name": "自动填写/隐私文案",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 3,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "yOB60",
+                      "name": "自动填写/隐私标题",
+                      "fill": "$ink",
+                      "content": "关闭浏览器后自动清除密码",
+                      "fontFamily": "$font-ui",
+                      "fontSize": 11,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "bO3YE",
+                      "name": "自动填写/隐私详情",
+                      "fill": "$ink-muted",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "联系方式保存在本机，密码仅保留于当前会话。",
+                      "lineHeight": 1.5,
+                      "fontFamily": "$font-ui",
+                      "fontSize": 10,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "QWkK9",
+              "name": "自动填写/应用范围",
+              "width": "fill_container",
+              "height": 62,
+              "stroke": "$line",
+              "strokeWidth": {
+                "top": 1,
+                "bottom": 1
+              },
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "E3yOm",
+                  "name": "自动填写/范围文案",
+                  "layout": "vertical",
+                  "gap": 3,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ers5F",
+                      "name": "自动填写/范围标题",
+                      "fill": "$ink",
+                      "content": "自动填入空白字段",
+                      "fontFamily": "$font-ui",
+                      "fontSize": 12,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "aviz5",
+                      "name": "自动填写/范围说明",
+                      "fill": "$ink-muted",
+                      "content": "不会覆盖已输入内容",
+                      "fontFamily": "$font-ui",
+                      "fontSize": 10,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "S8kKN9",
+                  "name": "自动填写/范围状态",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "C3hId0",
+                      "name": "自动填写/联系标签",
+                      "fill": "$success-soft",
+                      "cornerRadius": 4,
+                      "gap": 4,
+                      "padding": [
+                        5,
+                        7
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "f2jR6",
+                          "name": "自动填写/联系勾选",
+                          "width": 11,
+                          "height": 11,
+                          "icon": "check",
+                          "library": "lucide",
+                          "fill": "$success"
+                        },
+                        {
+                          "type": "text",
+                          "id": "J3UDN",
+                          "name": "自动填写/联系文字",
+                          "fill": "$success",
+                          "content": "联系",
+                          "fontFamily": "$font-ui",
+                          "fontSize": 9,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "ln9T7",
+                      "name": "自动填写/密码标签",
+                      "fill": "$success-soft",
+                      "cornerRadius": 4,
+                      "gap": 4,
+                      "padding": [
+                        5,
+                        7
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "m2Ofsz",
+                          "name": "自动填写/密码勾选",
+                          "width": 11,
+                          "height": 11,
+                          "icon": "check",
+                          "library": "lucide",
+                          "fill": "$success"
+                        },
+                        {
+                          "type": "text",
+                          "id": "bqf10",
+                          "name": "自动填写/密码文字",
+                          "fill": "$success",
+                          "content": "密码",
+                          "fontFamily": "$font-ui",
+                          "fontSize": 9,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "MzLVS",
+              "name": "自动填写/底部操作",
+              "width": "fill_container",
+              "height": "fill_container",
+              "alignItems": "end",
+              "children": [
+                {
+                  "id": "C3S9c",
+                  "type": "ref",
+                  "ref": "g9q9DD",
+                  "name": "自动填写/保存按钮",
+                  "width": "fill_container",
+                  "descendants": {
+                    "PktZN": {
+                      "icon": "save"
+                    },
+                    "EUBtu": {
+                      "content": "保存配置"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "U854y",
+      "x": 856,
+      "y": 860,
+      "name": "页面 03 · 订单验证",
+      "clip": true,
+      "width": 380,
+      "height": 600,
+      "fill": "$surface",
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#2A211E22",
+        "offset": {
+          "x": 0,
+          "y": 12
+        },
+        "blur": 28
+      },
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "O9bC79",
+          "name": "订单验证/品牌栏",
+          "width": "fill_container",
+          "height": 74,
+          "fill": "$ink",
+          "padding": [
+            0,
+            20
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "MV3Jp",
+              "name": "订单验证/品牌",
+              "gap": 11,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "WzMnq",
+                  "name": "订单验证/品牌图标",
+                  "width": 34,
+                  "height": 34,
+                  "fill": "$accent",
+                  "cornerRadius": 7,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "pKm4b",
+                      "name": "订单验证/品牌链接符号",
+                      "width": 20,
+                      "height": 20,
+                      "icon": "link-2",
+                      "library": "lucide",
+                      "fill": "#FFFFFF"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "GzNtr",
+                  "name": "订单验证/品牌文案",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "UPuj1",
+                      "name": "订单验证/品牌名称",
+                      "fill": "#FFFFFF",
+                      "content": "链动小铺",
+                      "fontFamily": "$font-ui",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "hj6Cb",
+                      "name": "订单验证/当前站点",
+                      "fill": "#D8CBC7",
+                      "content": "wzyp.cn · 已连接",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 9,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "AcyQ0",
+              "name": "订单验证/安全状态",
+              "fill": "#3B302C",
+              "cornerRadius": 5,
+              "gap": 6,
+              "padding": [
+                7,
+                9
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "Y7vCUn",
+                  "name": "订单验证/安全图标",
+                  "width": 14,
+                  "height": 14,
+                  "icon": "shield-check",
+                  "library": "lucide",
+                  "fill": "#FFB39F"
+                },
+                {
+                  "type": "text",
+                  "id": "oLFKP",
+                  "name": "订单验证/安全文字",
+                  "fill": "#F6ECE8",
+                  "content": "安全连接",
+                  "fontFamily": "$font-ui",
+                  "fontSize": 9,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "z5ZI4",
+          "name": "订单验证/主导航",
+          "width": "fill_container",
+          "height": 48,
+          "fill": "$surface-subtle",
+          "stroke": "$line",
+          "strokeWidth": {
+            "bottom": 1
+          },
+          "gap": 4,
+          "padding": [
+            5,
+            8
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "nUj9B",
+              "name": "订单验证/商品页签",
+              "width": "fill_container",
+              "height": "fill_container",
+              "cornerRadius": 5,
+              "gap": 7,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "T8EHn",
+                  "name": "订单验证/商品编号",
+                  "fill": "$ink-muted",
+                  "content": "01",
+                  "fontFamily": "$font-mono",
+                  "fontSize": 9,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "x1Acek",
+                  "name": "订单验证/商品页签文字",
+                  "fill": "$ink-muted",
+                  "content": "商品整理",
+                  "fontFamily": "$font-ui",
+                  "fontSize": 12,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "lBCyP",
+              "name": "订单验证/订单页签",
+              "width": "fill_container",
+              "height": "fill_container",
+              "fill": "$surface",
+              "cornerRadius": 5,
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#2A211E18",
+                "offset": {
+                  "x": 0,
+                  "y": 1
+                },
+                "blur": 3
+              },
+              "gap": 7,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "duvCr",
+                  "name": "订单验证/订单编号",
+                  "fill": "$accent",
+                  "content": "02",
+                  "fontFamily": "$font-mono",
+                  "fontSize": 9,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "n1qBT",
+                  "name": "订单验证/订单页签文字",
+                  "fill": "$ink",
+                  "content": "订单查询",
+                  "fontFamily": "$font-ui",
+                  "fontSize": 12,
+                  "fontWeight": "700"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "QJPjU",
+          "name": "订单验证/内容",
+          "width": "fill_container",
+          "height": "fill_container",
+          "fill": "$surface",
+          "layout": "vertical",
+          "gap": 18,
+          "padding": [
+            22,
+            20,
+            20,
+            20
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "zZptF",
+              "name": "订单验证/标题区",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 5,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "koD09",
+                  "name": "订单验证/步骤标识",
+                  "fill": "$accent",
+                  "content": "SECURITY CHECK  /  01",
+                  "fontFamily": "$font-mono",
+                  "fontSize": 9,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "kOIVs",
+                  "name": "订单验证/页面标题",
+                  "fill": "$ink",
+                  "content": "验证后查询订单",
+                  "fontFamily": "$font-ui",
+                  "fontSize": 22,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "egMEy",
+                  "name": "订单验证/页面说明",
+                  "fill": "$ink-muted",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "为保护订单信息，每次浏览器会话仅需验证一次。",
+                  "lineHeight": 1.5,
+                  "fontFamily": "$font-ui",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "b6TqJP",
+              "name": "订单验证/验证码模块",
+              "width": "fill_container",
+              "fill": "$surface-subtle",
+              "cornerRadius": 6,
+              "stroke": "$line",
+              "strokeWidth": 1,
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "WKsJI",
+                  "name": "订单验证/验证码顶部",
+                  "width": "fill_container",
+                  "height": 76,
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "dfTKB",
+                      "name": "订单验证/验证码图片",
+                      "width": "fill_container",
+                      "height": "fill_container",
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 5,
+                      "stroke": "$line-strong",
+                      "strokeWidth": 1,
+                      "gap": 4,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "XwGTx",
+                          "name": "订单验证/验证码字符 7",
+                          "rotation": -5,
+                          "fill": "$ink",
+                          "content": "7",
+                          "fontFamily": "IBM Plex Mono",
+                          "fontSize": 28,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "vaIcu",
+                          "name": "订单验证/验证码字符 K",
+                          "rotation": 4,
+                          "fill": "$accent",
+                          "content": "K",
+                          "fontFamily": "IBM Plex Mono",
+                          "fontSize": 28,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "N6wKt9",
+                          "name": "订单验证/验证码字符 P",
+                          "rotation": 2,
+                          "fill": "$ink",
+                          "content": "P",
+                          "fontFamily": "IBM Plex Mono",
+                          "fontSize": 28,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "AG2n3",
+                          "name": "订单验证/验证码字符 9",
+                          "rotation": -3.0000000000000004,
+                          "fill": "$accent",
+                          "content": "9",
+                          "fontFamily": "IBM Plex Mono",
+                          "fontSize": 28,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "gwL0D",
+                      "name": "订单验证/刷新验证码",
+                      "width": 44,
+                      "height": "fill_container",
+                      "fill": "$surface",
+                      "cornerRadius": 5,
+                      "stroke": "$line",
+                      "strokeWidth": 1,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "MmA9d",
+                          "name": "订单验证/刷新图标",
+                          "width": 18,
+                          "height": 18,
+                          "icon": "refresh-cw",
+                          "library": "lucide",
+                          "fill": "$ink"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "XLmai",
+                  "name": "订单验证/验证码输入",
+                  "width": "fill_container",
+                  "height": 46,
+                  "fill": "$surface",
+                  "cornerRadius": 5,
+                  "stroke": "$accent",
+                  "strokeWidth": 1,
+                  "gap": 10,
+                  "padding": [
+                    0,
+                    13
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "C5ZAZ",
+                      "name": "订单验证/输入图标",
+                      "width": 17,
+                      "height": 17,
+                      "icon": "text-cursor-input",
+                      "library": "lucide",
+                      "fill": "$accent"
+                    },
+                    {
+                      "type": "text",
+                      "id": "R89XT",
+                      "name": "订单验证/输入内容",
+                      "fill": "$ink",
+                      "content": "7KP9",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 15,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "rectangle",
+                      "id": "Lz9bj",
+                      "name": "订单验证/输入光标",
+                      "fill": "$accent",
+                      "width": 1,
+                      "height": 20
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "X3HDS6",
+              "name": "订单验证/查询身份",
+              "width": "fill_container",
+              "height": 58,
+              "stroke": "$line",
+              "strokeWidth": {
+                "top": 1,
+                "bottom": 1
+              },
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "agrrY",
+                  "name": "订单验证/身份文案",
+                  "layout": "vertical",
+                  "gap": 3,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "h6SqO",
+                      "name": "订单验证/身份标签",
+                      "fill": "$ink-muted",
+                      "content": "查询联系方式",
+                      "fontFamily": "$font-ui",
+                      "fontSize": 10,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "N4HceH",
+                      "name": "订单验证/身份值",
+                      "fill": "$ink",
+                      "content": "name@example.com",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "W5T8tM",
+                  "name": "订单验证/修改配置按钮",
+                  "cornerRadius": 5,
+                  "gap": 5,
+                  "padding": [
+                    7,
+                    8
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "KBrGC",
+                      "name": "订单验证/修改图标",
+                      "width": 13,
+                      "height": 13,
+                      "icon": "pencil",
+                      "library": "lucide",
+                      "fill": "$accent"
+                    },
+                    {
+                      "type": "text",
+                      "id": "nyrBr",
+                      "name": "订单验证/修改文字",
+                      "fill": "$accent",
+                      "content": "修改",
+                      "fontFamily": "$font-ui",
+                      "fontSize": 10,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "fIE6A",
+              "name": "订单验证/底部操作",
+              "width": "fill_container",
+              "height": "fill_container",
+              "alignItems": "end",
+              "children": [
+                {
+                  "id": "g4VYu",
+                  "type": "ref",
+                  "ref": "g9q9DD",
+                  "name": "订单验证/验证按钮",
+                  "width": "fill_container",
+                  "descendants": {
+                    "PktZN": {
+                      "icon": "shield-check"
+                    },
+                    "EUBtu": {
+                      "content": "验证并查询订单"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "GnEOe",
+      "x": 1280,
+      "y": 860,
+      "name": "页面 04 · 订单列表与卡密",
+      "clip": true,
+      "width": 380,
+      "height": 720,
+      "fill": "$surface",
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#2A211E22",
+        "offset": {
+          "x": 0,
+          "y": 12
+        },
+        "blur": 28
+      },
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "kH1bY",
+          "name": "订单列表/品牌栏",
+          "width": "fill_container",
+          "height": 66,
+          "fill": "$ink",
+          "padding": [
+            0,
+            18
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "mueNh",
+              "name": "订单列表/品牌",
+              "gap": 10,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "T9g8M",
+                  "name": "订单列表/品牌图标",
+                  "width": 30,
+                  "height": 30,
+                  "fill": "$accent",
+                  "cornerRadius": 6,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "ryQ1z",
+                      "name": "订单列表/品牌链接符号",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "link-2",
+                      "library": "lucide",
+                      "fill": "#FFFFFF"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "of87L",
+                  "name": "订单列表/品牌文案",
+                  "layout": "vertical",
+                  "gap": 1,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Aa8Nk",
+                      "name": "订单列表/品牌名称",
+                      "fill": "#FFFFFF",
+                      "content": "链动小铺",
+                      "fontFamily": "$font-ui",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "d0pQm",
+                      "name": "订单列表/当前站点",
+                      "fill": "#D8CBC7",
+                      "content": "wzyp.cn · 已连接",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 8,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "d3P6i",
+              "name": "订单列表/刷新按钮",
+              "width": 34,
+              "height": 34,
+              "fill": "#3B302C",
+              "cornerRadius": 5,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "tSYH7",
+                  "name": "订单列表/刷新图标",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "refresh-cw",
+                  "library": "lucide",
+                  "fill": "#F6ECE8"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Yszg1",
+          "name": "订单列表/主导航",
+          "width": "fill_container",
+          "height": 44,
+          "fill": "$surface-subtle",
+          "stroke": "$line",
+          "strokeWidth": {
+            "bottom": 1
+          },
+          "gap": 4,
+          "padding": [
+            4,
+            8
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "i20CnJ",
+              "name": "订单列表/商品页签",
+              "width": "fill_container",
+              "height": "fill_container",
+              "cornerRadius": 5,
+              "gap": 7,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "rb54I",
+                  "name": "订单列表/商品编号",
+                  "fill": "$ink-muted",
+                  "content": "01",
+                  "fontFamily": "$font-mono",
+                  "fontSize": 8,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "PoaCr",
+                  "name": "订单列表/商品页签文字",
+                  "fill": "$ink-muted",
+                  "content": "商品整理",
+                  "fontFamily": "$font-ui",
+                  "fontSize": 11,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "EzhJ2",
+              "name": "订单列表/订单页签",
+              "width": "fill_container",
+              "height": "fill_container",
+              "fill": "$surface",
+              "cornerRadius": 5,
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#2A211E18",
+                "offset": {
+                  "x": 0,
+                  "y": 1
+                },
+                "blur": 3
+              },
+              "gap": 7,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Uv3b6",
+                  "name": "订单列表/订单编号",
+                  "fill": "$accent",
+                  "content": "02",
+                  "fontFamily": "$font-mono",
+                  "fontSize": 8,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "mz5qK",
+                  "name": "订单列表/订单页签文字",
+                  "fill": "$ink",
+                  "content": "订单查询",
+                  "fontFamily": "$font-ui",
+                  "fontSize": 11,
+                  "fontWeight": "700"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "C7tvXo",
+          "name": "订单列表/内容",
+          "width": "fill_container",
+          "height": "fill_container",
+          "fill": "$surface",
+          "layout": "vertical",
+          "gap": 10,
+          "padding": [
+            14,
+            16
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "o8JqK",
+              "name": "订单列表/摘要",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "hB1Dx",
+                  "name": "订单列表/摘要文案",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "llOhM",
+                      "name": "订单列表/页面标题",
+                      "fill": "$ink",
+                      "content": "我的订单",
+                      "fontFamily": "$font-ui",
+                      "fontSize": 18,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ktG3I",
+                      "name": "订单列表/联系方式",
+                      "fill": "$ink-muted",
+                      "content": "name@example.com",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 9,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "SEsVk",
+                  "name": "订单列表/订单计数",
+                  "layout": "vertical",
+                  "gap": 1,
+                  "alignItems": "end",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "R9Ule",
+                      "name": "订单列表/计数数字",
+                      "fill": "$accent",
+                      "content": "18",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 17,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "JO60r",
+                      "name": "订单列表/计数单位",
+                      "fill": "$ink-muted",
+                      "content": "笔订单",
+                      "fontFamily": "$font-ui",
+                      "fontSize": 9,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Lz2gf",
+              "name": "订单列表/搜索筛选",
+              "width": "fill_container",
+              "height": 40,
+              "gap": 8,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Y59wa",
+                  "name": "订单列表/搜索框",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "fill": "$surface",
+                  "cornerRadius": 5,
+                  "stroke": "$line-strong",
+                  "strokeWidth": 1,
+                  "gap": 8,
+                  "padding": [
+                    0,
+                    11
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "d3Cvn",
+                      "name": "订单列表/搜索图标",
+                      "width": 15,
+                      "height": 15,
+                      "icon": "search",
+                      "library": "lucide",
+                      "fill": "$ink-muted"
+                    },
+                    {
+                      "type": "text",
+                      "id": "y8TEjN",
+                      "name": "订单列表/搜索占位",
+                      "fill": "$ink-muted",
+                      "content": "商品名或订单号",
+                      "fontFamily": "$font-ui",
+                      "fontSize": 10,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "MPn5x",
+                  "name": "订单列表/状态筛选",
+                  "width": 88,
+                  "height": "fill_container",
+                  "fill": "$surface-subtle",
+                  "cornerRadius": 5,
+                  "gap": 6,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "w1jL0",
+                      "name": "订单列表/筛选值",
+                      "fill": "$ink",
+                      "content": "全部状态",
+                      "fontFamily": "$font-ui",
+                      "fontSize": 10,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "TZGNU",
+                      "name": "订单列表/筛选图标",
+                      "width": 13,
+                      "height": 13,
+                      "icon": "chevron-down",
+                      "library": "lucide",
+                      "fill": "$ink-muted"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "KaB9Q",
+              "name": "订单列表/列表",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "st0uB",
+                  "name": "订单列表/订单一",
+                  "width": "fill_container",
+                  "fill": "$surface",
+                  "cornerRadius": 6,
+                  "stroke": "$line",
+                  "strokeWidth": 1,
+                  "layout": "vertical",
+                  "gap": 9,
+                  "padding": 12,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "S5zsb",
+                      "name": "订单列表/订单一标题行",
+                      "width": "fill_container",
+                      "justifyContent": "space_between",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "PUjg8",
+                          "name": "订单列表/订单一标题文案",
+                          "width": 250,
+                          "layout": "vertical",
+                          "gap": 4,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "lrIBu",
+                              "name": "订单列表/订单一商品名",
+                              "fill": "$ink",
+                              "content": "Steam 全球区礼品卡 100 元",
+                              "fontFamily": "$font-ui",
+                              "fontSize": 12,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "D0ukZ",
+                              "name": "订单列表/订单一元信息",
+                              "gap": 8,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "Sl9Me",
+                                  "name": "订单列表/已付款标签",
+                                  "fill": "$success-soft",
+                                  "cornerRadius": 4,
+                                  "padding": [
+                                    4,
+                                    7
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "MqBMg",
+                                      "name": "订单列表/已付款文字",
+                                      "fill": "$success",
+                                      "content": "已付款",
+                                      "fontFamily": "$font-ui",
+                                      "fontSize": 9,
+                                      "fontWeight": "700"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "G6pofX",
+                                  "name": "订单列表/订单一时间",
+                                  "fill": "$ink-muted",
+                                  "content": "09-16  10:26",
+                                  "fontFamily": "$font-mono",
+                                  "fontSize": 9,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "nvozz",
+                          "name": "订单列表/打开详情按钮",
+                          "width": 30,
+                          "height": 30,
+                          "fill": "$surface-subtle",
+                          "cornerRadius": 5,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "atfnW",
+                              "name": "订单列表/打开详情图标",
+                              "width": 14,
+                              "height": 14,
+                              "icon": "external-link",
+                              "library": "lucide",
+                              "fill": "$ink"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "jdSe3",
+                      "name": "订单列表/订单一信息",
+                      "width": "fill_container",
+                      "stroke": "$line",
+                      "strokeWidth": {
+                        "top": 1
+                      },
+                      "padding": [
+                        7,
+                        0,
+                        0,
+                        0
+                      ],
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "aEitP",
+                          "name": "订单列表/订单一编号",
+                          "fill": "$ink-muted",
+                          "content": "NO. 202609160018",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 9,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "PO54r",
+                          "name": "订单列表/订单一金额",
+                          "fill": "$ink",
+                          "content": "¥100.00",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 12,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "M2lvz",
+                      "name": "订单列表/卡密展开区",
+                      "width": "fill_container",
+                      "stroke": "$line",
+                      "strokeWidth": {
+                        "top": 1
+                      },
+                      "layout": "vertical",
+                      "gap": 7,
+                      "padding": [
+                        9,
+                        0,
+                        0,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "DUL6S",
+                          "name": "订单列表/卡密工具栏",
+                          "width": "fill_container",
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "upZWN",
+                              "name": "订单列表/卡密数量",
+                              "fill": "$ink",
+                              "content": "卡密  ·  2 条",
+                              "fontFamily": "$font-ui",
+                              "fontSize": 10,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "eMkIq",
+                              "name": "订单列表/卡密批量操作",
+                              "gap": 11,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "v7qrW",
+                                  "name": "订单列表/全部显示",
+                                  "gap": 4,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "icon",
+                                      "id": "vM2Qa",
+                                      "name": "订单列表/全部显示图标",
+                                      "width": 12,
+                                      "height": 12,
+                                      "icon": "eye",
+                                      "library": "lucide",
+                                      "fill": "$accent"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "aHz8C",
+                                      "name": "订单列表/全部显示文字",
+                                      "fill": "$accent",
+                                      "content": "全部显示",
+                                      "fontFamily": "$font-ui",
+                                      "fontSize": 9,
+                                      "fontWeight": "700"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "AqZuP",
+                                  "name": "订单列表/复制全部",
+                                  "gap": 4,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "icon",
+                                      "id": "CQE9X",
+                                      "name": "订单列表/复制全部图标",
+                                      "width": 12,
+                                      "height": 12,
+                                      "icon": "copy",
+                                      "library": "lucide",
+                                      "fill": "$accent"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "LXK9E",
+                                      "name": "订单列表/复制全部文字",
+                                      "fill": "$accent",
+                                      "content": "复制全部",
+                                      "fontFamily": "$font-ui",
+                                      "fontSize": 9,
+                                      "fontWeight": "700"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "ZX8o7",
+                          "name": "订单列表/卡密 1",
+                          "width": "fill_container",
+                          "height": 34,
+                          "fill": "$surface-subtle",
+                          "cornerRadius": 4,
+                          "padding": [
+                            0,
+                            9
+                          ],
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "c0V5YM",
+                              "name": "订单列表/卡密 1 内容",
+                              "gap": 8,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "TIe4Y",
+                                  "name": "订单列表/卡密 1 序号",
+                                  "fill": "$accent",
+                                  "content": "01",
+                                  "fontFamily": "$font-mono",
+                                  "fontSize": 8,
+                                  "fontWeight": "700"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "zmLeR",
+                                  "name": "订单列表/卡密 1 掩码",
+                                  "fill": "$ink",
+                                  "content": "•••• •••• ••••",
+                                  "fontFamily": "$font-mono",
+                                  "fontSize": 10,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "u6jmT",
+                              "name": "订单列表/卡密 1 操作",
+                              "gap": 9,
+                              "children": [
+                                {
+                                  "type": "icon",
+                                  "id": "O4D2vn",
+                                  "name": "订单列表/卡密 1 显示",
+                                  "width": 13,
+                                  "height": 13,
+                                  "icon": "eye",
+                                  "library": "lucide",
+                                  "fill": "$ink-muted"
+                                },
+                                {
+                                  "type": "icon",
+                                  "id": "qlKQD",
+                                  "name": "订单列表/卡密 1 复制",
+                                  "width": 13,
+                                  "height": 13,
+                                  "icon": "copy",
+                                  "library": "lucide",
+                                  "fill": "$ink-muted"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Lgo3P",
+                          "name": "订单列表/卡密 2",
+                          "width": "fill_container",
+                          "height": 34,
+                          "fill": "$surface-subtle",
+                          "cornerRadius": 4,
+                          "padding": [
+                            0,
+                            9
+                          ],
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "Vh55S",
+                              "name": "订单列表/卡密 2 内容",
+                              "gap": 8,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "VYNgT",
+                                  "name": "订单列表/卡密 2 序号",
+                                  "fill": "$accent",
+                                  "content": "02",
+                                  "fontFamily": "$font-mono",
+                                  "fontSize": 8,
+                                  "fontWeight": "700"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "rmayw",
+                                  "name": "订单列表/卡密 2 掩码",
+                                  "fill": "$ink",
+                                  "content": "•••• •••• ••••",
+                                  "fontFamily": "$font-mono",
+                                  "fontSize": 10,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "Z2WzC8",
+                              "name": "订单列表/卡密 2 操作",
+                              "gap": 9,
+                              "children": [
+                                {
+                                  "type": "icon",
+                                  "id": "s1KjFr",
+                                  "name": "订单列表/卡密 2 显示",
+                                  "width": 13,
+                                  "height": 13,
+                                  "icon": "eye",
+                                  "library": "lucide",
+                                  "fill": "$ink-muted"
+                                },
+                                {
+                                  "type": "icon",
+                                  "id": "jd1Oc",
+                                  "name": "订单列表/卡密 2 复制",
+                                  "width": 13,
+                                  "height": 13,
+                                  "icon": "copy",
+                                  "library": "lucide",
+                                  "fill": "$ink-muted"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "wZfBP",
+                  "name": "订单列表/订单二",
+                  "width": "fill_container",
+                  "fill": "$surface",
+                  "cornerRadius": 6,
+                  "stroke": "$line",
+                  "strokeWidth": 1,
+                  "layout": "vertical",
+                  "gap": 8,
+                  "padding": 12,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "W7YLyB",
+                      "name": "订单列表/订单二标题行",
+                      "width": "fill_container",
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "NBxSu",
+                          "name": "订单列表/订单二文案",
+                          "width": 250,
+                          "layout": "vertical",
+                          "gap": 4,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "N3K6l1",
+                              "name": "订单列表/订单二商品名",
+                              "fill": "$ink",
+                              "content": "网易云音乐黑胶 VIP 月卡",
+                              "fontFamily": "$font-ui",
+                              "fontSize": 12,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "caOLT",
+                              "name": "订单列表/订单二元信息",
+                              "gap": 8,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "lI2eB",
+                                  "name": "订单列表/未付款标签",
+                                  "fill": "$amber-soft",
+                                  "cornerRadius": 4,
+                                  "padding": [
+                                    4,
+                                    7
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "aaMI5",
+                                      "name": "订单列表/未付款文字",
+                                      "fill": "$amber",
+                                      "content": "未付款",
+                                      "fontFamily": "$font-ui",
+                                      "fontSize": 9,
+                                      "fontWeight": "700"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "LQC9b",
+                                  "name": "订单列表/订单二时间",
+                                  "fill": "$ink-muted",
+                                  "content": "09-15  18:04",
+                                  "fontFamily": "$font-mono",
+                                  "fontSize": 9,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "k2H4q",
+                          "name": "订单列表/订单二金额",
+                          "fill": "$ink",
+                          "content": "¥18.00",
+                          "fontFamily": "$font-mono",
+                          "fontSize": 11,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "S8rNi",
+              "name": "订单列表/分页",
+              "width": "fill_container",
+              "height": "fill_container",
+              "gap": 12,
+              "justifyContent": "center",
+              "alignItems": "end",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "a1FoFW",
+                  "name": "订单列表/上一页",
+                  "width": 30,
+                  "height": 30,
+                  "fill": "$surface-subtle",
+                  "cornerRadius": 5,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "kPnJm",
+                      "name": "订单列表/上一页图标",
+                      "width": 14,
+                      "height": 14,
+                      "icon": "arrow-left",
+                      "library": "lucide",
+                      "fill": "$ink-muted"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "Ct6ES",
+                  "name": "订单列表/页码",
+                  "fill": "$ink-muted",
+                  "content": "1 / 2",
+                  "fontFamily": "$font-mono",
+                  "fontSize": 9,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "k5UZCQ",
+                  "name": "订单列表/下一页",
+                  "width": 30,
+                  "height": 30,
+                  "fill": "$ink",
+                  "cornerRadius": 5,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "WMN5L",
+                      "name": "订单列表/下一页图标",
+                      "width": 14,
+                      "height": 14,
+                      "icon": "arrow-right",
+                      "library": "lucide",
+                      "fill": "#FFFFFF"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "canvas": {
+      "type": "color",
+      "value": "#F6F7F7"
+    },
+    "surface": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "surface-subtle": {
+      "type": "color",
+      "value": "#F2F1F0"
+    },
+    "ink": {
+      "type": "color",
+      "value": "#2A211E"
+    },
+    "ink-muted": {
+      "type": "color",
+      "value": "#756864"
+    },
+    "line": {
+      "type": "color",
+      "value": "#E7DEDA"
+    },
+    "line-strong": {
+      "type": "color",
+      "value": "#CDBEB7"
+    },
+    "accent": {
+      "type": "color",
+      "value": "#F15A37"
+    },
+    "accent-hover": {
+      "type": "color",
+      "value": "#D94727"
+    },
+    "accent-soft": {
+      "type": "color",
+      "value": "#FFE7DF"
+    },
+    "amber": {
+      "type": "color",
+      "value": "#B86B08"
+    },
+    "amber-soft": {
+      "type": "color",
+      "value": "#FEF1D2"
+    },
+    "danger": {
+      "type": "color",
+      "value": "#B42318"
+    },
+    "danger-soft": {
+      "type": "color",
+      "value": "#FEE4E2"
+    },
+    "success": {
+      "type": "color",
+      "value": "#237A4B"
+    },
+    "success-soft": {
+      "type": "color",
+      "value": "#DFF3E8"
+    },
+    "font-ui": {
+      "type": "string",
+      "value": "Noto Sans SC"
+    },
+    "font-mono": {
+      "type": "string",
+      "value": "IBM Plex Mono"
+    }
+  },
+  "fileToken": "074c25bd-23ee-4ca4-8ad5-a79da43a15a4"
+}
