@@ -9,110 +9,178 @@
     <link rel="stylesheet" href="src/popup.css" />
   </head>
   <body>
-    <main class="app">
-      <header class="app-header">
-        <img class="brand-mark" src="assets/store-icon-128.png" alt="" width="32" height="32" />
-        <div class="brand-copy">
-          <h1 id="popup-title">链动小铺助手</h1>
-          <p id="page-title" class="page-title">正在读取当前页面…</p>
-        </div>
-      </header>
-      <section id="unsupported" class="notice" hidden>请在 wzyp.cn 页面中打开此扩展。</section>
-      <div id="tool-content" hidden>
-        <div class="tabs" role="tablist" aria-label="弹窗视图">
-          <button id="products-tab" class="tab" role="tab" aria-selected="true" aria-controls="settings">商品整理</button>
-          <button id="orders-tab" class="tab" role="tab" aria-selected="false" aria-controls="orders-panel">订单查询</button>
-        </div>
-        <section id="orders-panel" class="orders-panel" role="tabpanel" aria-labelledby="orders-tab" hidden>
-          <div class="panel-heading">
-            <div>
-              <h2>订单查询</h2>
-              <p id="order-contact" class="order-contact"></p>
+    <main id="app" class="app" data-view="products">
+      <section id="unsupported" class="unsupported" hidden>
+        <div class="unsupported-icon"><svg><use href="#i-link" /></svg></div>
+        <div><strong>请在链动小铺页面中打开</strong><span>本扩展仅在 wzyp.cn 页面可用。</span></div>
+      </section>
+
+      <div id="workspace" hidden>
+        <header class="brand-bar">
+          <div class="brand">
+            <div class="brand-mark"><svg><use href="#i-link" /></svg></div>
+            <div class="brand-copy"><strong>链动小铺</strong><span>wzyp.cn · 已连接</span></div>
+          </div>
+          <button id="header-action" class="header-action icon-button" type="button" aria-label="更多选项">
+            <svg class="header-action-default"><use href="#i-ellipsis" /></svg>
+            <svg class="header-action-close"><use href="#i-x" /></svg>
+            <svg class="header-action-refresh"><use href="#i-refresh" /></svg>
+            <span class="header-action-safe"><svg><use href="#i-shield" /></svg>安全连接</span>
+          </button>
+        </header>
+
+        <nav id="tabs" class="tabs" aria-label="功能导航">
+          <button class="tab active" data-view="products" type="button"><small>01</small><span>商品整理</span></button>
+          <button class="tab" data-view="orders" type="button"><small>02</small><span>订单查询</span></button>
+        </nav>
+
+        <section id="products" class="view products-view active">
+          <div class="products-heading">
+            <div><h1>整理当前货架</h1><p><span id="product-count">-- 件商品</span> · <span id="sold-out-count">-- 件缺货</span></p></div>
+            <span class="applied-badge"><i></i>已应用</span>
+          </div>
+
+          <label class="sort-field">
+            <span class="field-label">排序规则</span>
+            <span class="sort-control">
+              <svg><use href="#i-sort" /></svg>
+              <span class="sort-copy"><strong id="sort-label">价格从低到高</strong><small id="sort-hint">低价商品优先</small></span>
+              <svg class="chevrons"><use href="#i-chevrons" /></svg>
+              <select id="product-sort" aria-label="排序规则">
+                <option value="price-asc">价格从低到高</option>
+                <option value="price-desc">价格从高到低</option>
+                <option value="default">网站默认顺序</option>
+              </select>
+            </span>
+          </label>
+
+          <label class="switch-row">
+            <span><strong>隐藏缺货商品</strong><small id="hidden-hint">仅显示可立即购买的商品</small></span>
+            <input id="hide-sold-out" type="checkbox" /><i></i>
+          </label>
+
+          <div class="sync-note">
+            <svg><use href="#i-scan" /></svg>
+            <div><strong>页面规则正在生效</strong><span id="sync-detail">正在读取当前货架...</span></div>
+          </div>
+
+          <button id="open-settings" class="autofill-entry" type="button">
+            <span class="entry-icon"><svg><use href="#i-wand" /></svg></span>
+            <span class="entry-copy"><strong>订单自动填写</strong><small id="autofill-status">尚未配置</small></span>
+            <svg class="entry-arrow"><use href="#i-chevron-right" /></svg>
+          </button>
+
+          <div class="products-footer">
+            <span id="product-sync-time">等待同步</span>
+            <button id="reapply-products" class="text-action" type="button"><svg><use href="#i-refresh" /></svg>重新应用</button>
+          </div>
+          <p id="product-status" class="status" aria-live="polite"></p>
+        </section>
+
+        <section id="settings" class="view settings-view">
+          <div class="settings-title">
+            <button id="back-products" class="back-button" type="button" aria-label="返回商品整理"><svg><use href="#i-arrow-left" /></svg></button>
+            <div><h1>订单自动填写</h1><p>用于订单确认与订单查询</p></div>
+          </div>
+
+          <div class="form-field">
+            <label for="contact">联系方式</label>
+            <div class="input-shell"><svg><use href="#i-at" /></svg><input id="contact" autocomplete="email" placeholder="name@example.com" /></div>
+          </div>
+          <div class="form-field">
+            <label for="password">安全密码&nbsp; · &nbsp;可选</label>
+            <div class="input-shell"><svg><use href="#i-lock" /></svg><input id="password" type="password" autocomplete="current-password" placeholder="输入安全密码" /><button id="toggle-password" type="button" aria-label="显示密码"><svg><use href="#i-eye" /></svg></button></div>
+          </div>
+          <fieldset class="password-mode">
+            <legend>密码保存方式</legend>
+            <div class="segmented">
+              <label><input id="session-password" name="password-mode" type="radio" checked /><span><svg><use href="#i-timer" /></svg>仅本次会话</span></label>
+              <label><input id="remember-password" name="password-mode" type="radio" /><span><svg><use href="#i-device" /></svg>此设备</span></label>
+            </div>
+          </fieldset>
+
+          <div class="privacy-note">
+            <svg><use href="#i-shield" /></svg>
+            <div><strong>关闭浏览器后自动清除密码</strong><span>联系方式保存在本机，密码仅保留于当前会话。</span></div>
+          </div>
+
+          <div class="autofill-scope">
+            <div><strong>自动填入空白字段</strong><span>不会覆盖已输入内容</span></div>
+            <div class="scope-tags"><span><svg><use href="#i-check" /></svg>联系</span><span><svg><use href="#i-check" /></svg>密码</span></div>
+          </div>
+
+          <div class="settings-footer">
+            <p id="settings-status" class="status" aria-live="polite"></p>
+            <button id="save-settings" class="primary-button" type="button"><svg><use href="#i-save" /></svg>保存配置</button>
+          </div>
+        </section>
+
+        <section id="orders" class="view orders-view">
+          <div id="verify-panel" class="verify-panel">
+            <div class="view-heading"><span class="eyebrow">SECURITY CHECK&nbsp; / &nbsp;01</span><h1>验证后查询订单</h1><p>为保护订单信息，每次浏览器会话仅需验证一次。</p></div>
+            <div id="captcha-empty" class="captcha-box empty-captcha">
+              <span class="captcha-empty-icon"><svg><use href="#i-shield" /></svg></span>
+              <strong>尚未获取验证码</strong><p>获取验证码后，输入图中的字符。</p>
+              <button id="start-captcha" class="outline-button" type="button">获取验证码</button>
+            </div>
+            <div id="captcha-form" class="captcha-box" hidden>
+              <div class="captcha-image-row"><img id="captcha-image" alt="订单验证码" /><button id="refresh-captcha" type="button" aria-label="换一张验证码"><svg><use href="#i-refresh" /></svg></button></div>
+              <label class="captcha-input"><svg><use href="#i-text-input" /></svg><input id="captcha-code" inputmode="text" maxlength="8" placeholder="输入验证码" /></label>
+            </div>
+            <div class="identity">
+              <div><small>查询联系方式</small><strong id="order-contact-display">--</strong></div>
+              <button class="text-action" data-go-settings type="button"><svg><use href="#i-pencil" /></svg>修改</button>
+            </div>
+            <div class="verify-footer">
+              <p id="captcha-status" class="status" aria-live="polite"></p>
+              <button id="verify-captcha" class="primary-button" type="button"><svg><use href="#i-shield" /></svg>验证并查询订单</button>
             </div>
           </div>
-          <div id="order-tools" class="order-tools" hidden>
-            <label class="search-field" for="order-search">
-              <span>搜索</span>
-              <input id="order-search" type="search" autocomplete="off" placeholder="商品名或订单号" />
-            </label>
-            <label class="filter-field" for="order-status-filter">
-              <span>状态</span>
-              <select id="order-status-filter">
-                <option value="all">全部</option>
-                <option value="0">未付款</option>
-                <option value="1">已付款</option>
-                <option value="2">已关闭</option>
-                <option value="3">已退款</option>
-              </select>
-            </label>
-            <button id="refresh-orders" class="icon-button" type="button" title="刷新订单" aria-label="刷新订单">↻</button>
+
+          <div id="orders-panel" class="orders-panel" hidden>
+            <div class="orders-summary">
+              <div><h1>我的订单</h1><p id="orders-subtitle">查询订单记录</p></div>
+              <div class="order-count"><strong id="order-total">--</strong><span>笔订单</span></div>
+            </div>
+            <div class="filters">
+              <label><svg><use href="#i-search" /></svg><input id="order-search" type="search" placeholder="商品名或订单号" /></label>
+              <select id="order-filter"><option value="all">全部状态</option><option value="paid">已付款</option><option value="pending">未付款</option></select>
+            </div>
+            <div id="orders-empty" class="orders-empty"><strong>还没有订单数据</strong><p>完成验证后即可读取订单列表。</p></div>
+            <div id="order-list" class="order-list" hidden></div>
+            <div id="pagination" class="pagination" hidden><button id="previous-page" type="button" aria-label="上一页"><svg><use href="#i-arrow-left" /></svg></button><span id="page-label"></span><button id="next-page" type="button" aria-label="下一页"><svg><use href="#i-arrow-right" /></svg></button></div>
+            <p id="orders-status" class="status" aria-live="polite"></p>
           </div>
-          <p id="order-action-status" class="order-action-status" role="status"></p>
-          <div id="order-list" class="order-list"></div>
-          <nav id="order-pagination" class="order-pagination" aria-label="订单分页" hidden>
-            <button id="order-previous-page" class="icon-button" type="button" title="上一页" aria-label="上一页">←</button>
-            <span id="order-page-info" class="order-page-info" aria-live="polite"></span>
-            <button id="order-next-page" class="icon-button" type="button" title="下一页" aria-label="下一页">→</button>
-          </nav>
-          <p id="orders-empty" class="orders-empty" hidden>未查询到订单。</p>
-          <button id="configure-orders" class="secondary-button" type="button" hidden>打开订单配置</button>
-          <button id="retry-orders" class="secondary-button" type="button" hidden>重新查询</button>
-          <div id="captcha-panel" class="captcha-panel" hidden>
-            <img id="captcha-image" alt="订单验证码" />
-            <label class="captcha-field" for="captcha-code"><span>验证码</span><input id="captcha-code" type="text" inputmode="text" autocomplete="off" placeholder="例如 A7K9" /></label>
-            <div class="captcha-actions"><button id="refresh-captcha" class="icon-button" title="刷新验证码" aria-label="刷新验证码">↻</button><button id="verify-captcha" class="primary-button">验证并查询</button></div>
-            <p id="captcha-status" class="captcha-status" role="status"></p>
-          </div>
-          <button id="start-captcha" class="primary-button">完成人机验证</button>
-        </section>
-        <section id="settings" class="settings" role="tabpanel" aria-labelledby="products-tab">
-          <div class="section-heading">
-            <h2>商品整理</h2>
-            <p id="product-settings-status" class="product-settings-status" role="status"></p>
-          </div>
-          <label class="setting-field product-sort-field" for="product-sort-mode">
-            <span>排序方式</span>
-            <select id="product-sort-mode">
-              <option value="price-asc">价格从低到高</option>
-              <option value="price-desc">价格从高到低</option>
-              <option value="default">网站默认顺序</option>
-            </select>
-          </label>
-          <div class="setting-row">
-            <div><h3>隐藏缺货</h3><p>只保留可购买商品</p></div>
-            <label class="switch" title="隐藏缺货商品">
-              <input id="hide-sold-out-toggle" type="checkbox" aria-label="隐藏缺货商品" />
-              <span class="switch-track"></span>
-            </label>
-          </div>
-          <details id="order-settings-disclosure" class="settings-disclosure">
-            <summary>
-              <span><strong>订单自动填写</strong><small id="order-config-summary">未配置</small></span>
-              <span class="disclosure-chevron" aria-hidden="true">⌄</span>
-            </summary>
-            <form id="order-settings-form" class="order-settings-form">
-              <label class="setting-field" for="order-contact-input">
-                <span>联系方式</span>
-                <input id="order-contact-input" type="text" autocomplete="username" placeholder="name@example.com 或手机号" aria-describedby="order-settings-status" />
-              </label>
-              <label class="setting-field" for="order-password-input">
-                <span>安全密码 <small>可选</small></span>
-                <input id="order-password-input" type="password" autocomplete="current-password" maxlength="128" placeholder="未设置" />
-              </label>
-              <label class="checkbox-row" for="remember-order-password">
-                <input id="remember-order-password" type="checkbox" />
-                <span>在此设备上长期记住密码</span>
-              </label>
-              <p class="privacy-hint">关闭后，密码会在退出浏览器时清除。</p>
-              <div class="order-settings-actions">
-                <button id="save-order-settings" class="primary-button" type="submit">保存配置</button>
-                <p id="order-settings-status" class="order-settings-status" role="status"></p>
-              </div>
-            </form>
-          </details>
         </section>
       </div>
     </main>
+
+    <svg class="icon-sprite" aria-hidden="true">
+      <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></symbol>
+      <symbol id="i-ellipsis" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="m18 6-12 12M6 6l12 12"/></symbol>
+      <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11a8.1 8.1 0 0 0-15.5-2M4 4v5h5M4 13a8.1 8.1 0 0 0 15.5 2M20 20v-5h-5"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.68 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+      <symbol id="i-sort" viewBox="0 0 24 24"><path d="M3 8l4-4 4 4M7 4v16M11 12h10M11 16h7M11 20h4"/></symbol>
+      <symbol id="i-chevrons" viewBox="0 0 24 24"><path d="m7 15 5 5 5-5M7 9l5-5 5 5"/></symbol>
+      <symbol id="i-scan" viewBox="0 0 24 24"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M7 12h10"/></symbol>
+      <symbol id="i-wand" viewBox="0 0 24 24"><path d="m15 4 5 5L7 22H2v-5zM14 5l5 5M6 5V2M5 3H2M21 19v3M23 21h-4M11 3l1-1M3 11l-1 1"/></symbol>
+      <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+      <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></symbol>
+      <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="m12 5 7 7-7 7M5 12h14"/></symbol>
+      <symbol id="i-at" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/></symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24"><circle cx="12" cy="16" r="1"/><rect width="18" height="12" x="3" y="10" rx="2"/><path d="M7 10V7a5 5 0 0 1 10 0v3"/></symbol>
+      <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.06 12.35a1 1 0 0 1 0-.7C3.6 7.6 7.5 5 12 5s8.4 2.6 9.94 6.65a1 1 0 0 1 0 .7C20.4 16.4 16.5 19 12 19s-8.4-2.6-9.94-6.65"/><circle cx="12" cy="12" r="3"/></symbol>
+      <symbol id="i-timer" viewBox="0 0 24 24"><path d="M10 2h4M12 14v-4M4 13a8 8 0 1 0 8-8 8.4 8.4 0 0 0-5.3 1.9L4 9"/><path d="M4 5v4h4"/></symbol>
+      <symbol id="i-device" viewBox="0 0 24 24"><rect width="14" height="10" x="2" y="3" rx="2"/><path d="M8 21h6M9 17v4M22 8h-6v10h6z"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m20 6-11 11-5-5"/></symbol>
+      <symbol id="i-save" viewBox="0 0 24 24"><path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8A2 2 0 0 1 21 8.8V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></symbol>
+      <symbol id="i-text-input" viewBox="0 0 24 24"><path d="M5 4h14M5 20h14M9 4v16M15 4v16M3 8v8M21 8v8"/></symbol>
+      <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4z"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+      <symbol id="i-copy" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></symbol>
+      <symbol id="i-external" viewBox="0 0 24 24"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+    </svg>
     <script src="src/popup.js"></script>
   </body>
 </html>
