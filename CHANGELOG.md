@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Restored the per-order link that opens the order detail page in a new tab (regression from the popup redesign).
+- Added automated tests for the MD5 helper used by the captcha signature (`node --test`).
+
+### Fixed
+
+- Content-script API requests now time out after 15 seconds and report friendly errors instead of raw parse failures.
+- The background session-storage handler now replies with an error for unknown actions instead of leaving the sender hanging.
+
+### Changed
+
+- The MD5 helper moved to `src/md5.js` so it can be tested independently.
+- The extension-pages CSP now allows images from `https://*.wzyp.cn` in addition to `https://wzyp.cn`.
+
 ## [1.2.0] - 2026-10-08
 
 ### Changed

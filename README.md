@@ -39,6 +39,12 @@ https://chromewebstore.google.com/detail/%E9%93%BE%E5%8A%A8%E5%B0%8F%E9%93%BA%E5
 
 修改 `manifest.json`、`popup.html` 或 `src/content.js` 后，需要在 `chrome://extensions` 中点击扩展的“重新加载”，再刷新 WZYP 页面。
 
+## 测试
+
+```sh
+node --test
+```
+
 ## 打包
 
 每次发布更新前，请提升 `manifest.json` 中的 `version`，然后生成上传包：

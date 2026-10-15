@@ -192,7 +192,8 @@ function renderOrders() {
     const no = orderNo(order);
     const paid = orderPaid(order);
     const card = state.cards.get(no);
-    return `<article class="order"><div class="order-top"><div class="order-title"><span class="order-name">${escapeHtml(orderName(order))}</span><div class="order-submeta"><span class="badge ${paid ? "paid" : ""}">${paid ? "已付款" : "未付款"}</span><span class="order-time">${escapeHtml(formatTime(order.create_time || order.created_at))}</span></div></div></div><div class="order-info"><span class="order-no">NO. ${escapeHtml(no)}</span><span class="order-amount">${escapeHtml(orderAmount(order))}</span></div>${paid ? renderCardSection(no, card) : ""}</article>`;
+    const detailUrl = no === "--" ? "" : `https://wzyp.cn/order/result/${encodeURIComponent(no)}`;
+    return `<article class="order"><div class="order-top"><div class="order-title"><span class="order-name">${escapeHtml(orderName(order))}</span><div class="order-submeta"><span class="badge ${paid ? "paid" : ""}">${paid ? "已付款" : "未付款"}</span><span class="order-time">${escapeHtml(formatTime(order.create_time || order.created_at))}</span></div></div>${detailUrl ? `<a class="order-detail-link" href="${escapeHtml(detailUrl)}" target="_blank" rel="noopener" aria-label="打开订单详情页">${icon("external")}</a>` : ""}</div><div class="order-info"><span class="order-no">NO. ${escapeHtml(no)}</span><span class="order-amount">${escapeHtml(orderAmount(order))}</span></div>${paid ? renderCardSection(no, card) : ""}</article>`;
   }).join("");
   $("#pagination").hidden = orders.length <= state.perPage;
   $("#page-label").textContent = `${state.page} / ${pages}`;

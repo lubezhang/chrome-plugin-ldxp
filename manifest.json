@@ -7,7 +7,7 @@
   "permissions": ["storage", "clipboardWrite"],
   "host_permissions": ["https://wzyp.cn/*", "https://*.wzyp.cn/*"],
   "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self'; img-src 'self' data: https://wzyp.cn"
+    "extension_pages": "script-src 'self'; object-src 'self'; img-src 'self' data: https://wzyp.cn https://*.wzyp.cn"
   },
   "icons": {
     "128": "assets/store-icon-128.png"
@@ -21,7 +21,7 @@
   },
   "content_scripts": [{
     "matches": ["https://wzyp.cn/*", "https://*.wzyp.cn/*"],
-    "js": ["src/content.js"],
+    "js": ["src/md5.js", "src/content.js"],
     "run_at": "document_idle"
   }]
 }
