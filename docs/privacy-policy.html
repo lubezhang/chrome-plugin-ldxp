@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet" />
+    <title>链动小铺助手隐私政策</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --paper: #f5f8f7;
+        --surface: #ffffff;
+        --surface-soft: #edf4f2;
+        --ink: #17211f;
+        --muted: #53625f;
+        --rule: #cedbd7;
+        --accent: #087f68;
+        --accent-strong: #056452;
+        --accent-soft: #d9eee8;
+        --shadow: 0 18px 48px rgba(23, 54, 48, 0.08);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --paper: #101614;
+          --surface: #17201e;
+          --surface-soft: #1d2a27;
+          --ink: #edf5f2;
+          --muted: #aebfba;
+          --rule: #344641;
+          --accent: #5cd0b4;
+          --accent-strong: #81dfc8;
+          --accent-soft: #183c34;
+          --shadow: 0 18px 48px rgba(0, 0, 0, 0.22);
+        }
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: "Noto Sans SC", sans-serif;
+        line-height: 1.78;
+        text-rendering: optimizeLegibility;
+      }
+      a { color: var(--accent-strong); text-underline-offset: 3px; }
+      a:hover { text-decoration-thickness: 2px; }
+      .page {
+        width: min(1160px, calc(100% - 40px));
+        margin: 0 auto;
+        padding: 64px 0 88px;
+      }
+      .masthead {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 36px;
+        align-items: end;
+        padding-bottom: 34px;
+        border-bottom: 1px solid var(--rule);
+      }
+      h1, h2 {
+        font-family: "Noto Serif SC", serif;
+        letter-spacing: -0.02em;
+      }
+      h1 {
+        max-width: 760px;
+        margin: 0;
+        font-size: clamp(2.25rem, 5vw, 4.4rem);
+        line-height: 1.08;
+        font-weight: 700;
+      }
+      .meta {
+        min-width: 190px;
+        padding: 18px 0 4px 22px;
+        border-left: 3px solid var(--accent);
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+      .meta strong {
+        display: block;
+        margin-top: 2px;
+        color: var(--ink);
+        font-size: 1rem;
+      }
+      .intro {
+        max-width: 820px;
+        margin: 34px 0 0;
+        font-size: 1.08rem;
+        color: var(--muted);
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: 220px minmax(0, 1fr);
+        gap: clamp(44px, 7vw, 96px);
+        align-items: start;
+        margin-top: 52px;
+      }
+      nav {
+        position: sticky;
+        top: 24px;
+      }
+      nav p {
+        margin: 0 0 14px;
+        color: var(--muted);
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+      }
+      nav ol {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        counter-reset: toc;
+      }
+      nav li { counter-increment: toc; }
+      nav a {
+        display: grid;
+        grid-template-columns: 2rem 1fr;
+        gap: 4px;
+        padding: 7px 0;
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.9rem;
+        line-height: 1.45;
+      }
+      nav a::before {
+        content: counter(toc, decimal-leading-zero);
+        color: var(--accent);
+        font-variant-numeric: tabular-nums;
+      }
+      nav a:hover { color: var(--ink); }
+      article { min-width: 0; }
+      .summary {
+        margin-bottom: 46px;
+        padding: 26px 28px;
+        background: var(--surface-soft);
+        border-radius: 6px 22px 6px 6px;
+      }
+      .summary h2 {
+        margin: 0 0 10px;
+        font-size: 1.32rem;
+      }
+      .summary p { margin: 0; }
+      section {
+        scroll-margin-top: 28px;
+        padding: 0 0 42px;
+        margin: 0 0 42px;
+        border-bottom: 1px solid var(--rule);
+      }
+      section:last-of-type { margin-bottom: 0; }
+      section h2 {
+        margin: 0 0 18px;
+        font-size: clamp(1.55rem, 3vw, 2rem);
+        line-height: 1.35;
+      }
+      section h3 {
+        margin: 28px 0 10px;
+        font-size: 1.02rem;
+        line-height: 1.55;
+      }
+      section p { margin: 0 0 14px; }
+      section p:last-child { margin-bottom: 0; }
+      ul {
+        margin: 12px 0 18px;
+        padding-left: 1.3rem;
+      }
+      li { margin: 8px 0; }
+      li::marker { color: var(--accent); }
+      .data-list {
+        display: grid;
+        gap: 12px;
+        margin: 18px 0;
+      }
+      .data-row {
+        display: grid;
+        grid-template-columns: minmax(140px, 0.55fr) minmax(0, 1.45fr);
+        gap: 20px;
+        padding: 16px 0;
+        border-top: 1px solid var(--rule);
+      }
+      .data-row:last-child { border-bottom: 1px solid var(--rule); }
+      .data-row strong { font-size: 0.95rem; }
+      .data-row span { color: var(--muted); }
+      .note {
+        margin-top: 20px;
+        padding: 18px 20px;
+        background: var(--surface);
+        border: 1px solid var(--rule);
+        border-radius: 4px;
+        box-shadow: var(--shadow);
+      }
+      .note strong { color: var(--accent-strong); }
+      .permissions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 20px;
+      }
+      .permission {
+        padding: 18px;
+        background: var(--surface);
+        border-top: 3px solid var(--accent);
+        box-shadow: var(--shadow);
+      }
+      .permission code {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--accent-strong);
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 0.86rem;
+      }
+      .permission p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+      footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        margin-top: 48px;
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+      footer p { margin: 0; }
+
+      @media (max-width: 780px) {
+        .page {
+          width: min(100% - 28px, 680px);
+          padding: 38px 0 64px;
+        }
+        .masthead { grid-template-columns: 1fr; gap: 20px; }
+        .meta {
+          min-width: 0;
+          padding: 10px 0 0;
+          border-left: 0;
+          border-top: 3px solid var(--accent);
+        }
+        .layout { grid-template-columns: 1fr; gap: 34px; margin-top: 38px; }
+        nav {
+          position: static;
+          padding: 18px 20px;
+          background: var(--surface);
+          border: 1px solid var(--rule);
+        }
+        nav ol { columns: 2; column-gap: 22px; }
+        nav li { break-inside: avoid; }
+        .summary { padding: 22px; }
+        .permissions { grid-template-columns: 1fr; }
+        .data-row { grid-template-columns: 1fr; gap: 6px; }
+        footer { flex-direction: column; }
+      }
+
+      @media (max-width: 430px) {
+        h1 { font-size: 2.3rem; }
+        .intro { font-size: 1rem; }
+        nav ol { columns: 1; }
+        section { padding-bottom: 34px; margin-bottom: 34px; }
+      }
+
+      @media print {
+        body { background: #fff; color: #111; }
+        .page { width: 100%; padding: 0; }
+        nav { display: none; }
+        .layout { display: block; margin-top: 34px; }
+        .summary, .permission, .note { box-shadow: none; }
+        section { break-inside: avoid; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="masthead">
+        <div>
+          <h1>链动小铺助手<br />隐私政策</h1>
+          <p class="intro">本政策说明链动小铺助手 Chrome 扩展在提供商品整理、订单查询、卡密查看与自动填写功能时，如何处理数据及使用浏览器权限。</p>
+        </div>
+        <div class="meta">
+          生效日期
+          <strong>2026 年 10 月 8 日</strong>
+          适用版本
+          <strong>1.2.0 及后续版本</strong>
+        </div>
+      </header>
+
+      <div class="layout">
+        <nav aria-label="政策目录">
+          <p>目录</p>
+          <ol>
+            <li><a href="#scope">适用范围</a></li>
+            <li><a href="#data">处理的数据</a></li>
+            <li><a href="#use">使用方式</a></li>
+            <li><a href="#storage">存储与保留</a></li>
+            <li><a href="#permissions">权限说明</a></li>
+            <li><a href="#sharing">共享与第三方</a></li>
+            <li><a href="#security">安全提示</a></li>
+            <li><a href="#choices">你的选择</a></li>
+            <li><a href="#children">未成年人</a></li>
+            <li><a href="#changes">政策更新</a></li>
+            <li><a href="#contact">联系我们</a></li>
+          </ol>
+        </nav>
+
+        <article>
+          <div class="summary">
+            <h2>要点概览</h2>
+            <p>扩展不设置开发者服务器，不投放广告，也不使用分析或追踪工具。数据主要保存在你的 Chrome 扩展存储中；当你主动查询订单、读取卡密、完成人机验证或确认下单时，必要数据会从你的浏览器直接发送给 WZYP 网站及其指定的验证服务。</p>
+          </div>
+
+          <section id="scope">
+            <h2>1. 适用范围</h2>
+            <p>本政策适用于“链动小铺助手”Chrome 扩展。扩展仅在 <strong>wzyp.cn</strong> 及其子域名页面上运行，用于整理页面中的商品、查询订单、查看卡密，并在订单确认页面自动填写用户保存的信息。</p>
+            <p>本政策不适用于 WZYP 网站本身或其他第三方服务。你在这些服务上的活动仍受相应服务自身条款与隐私政策约束。</p>
+          </section>
+
+          <section id="data">
+            <h2>2. 我们处理哪些数据</h2>
+            <div class="data-list">
+              <div class="data-row">
+                <strong>功能偏好</strong>
+                <span>是否隐藏缺货商品、商品排序方式，以及是否长期记住订单安全密码。</span>
+              </div>
+              <div class="data-row">
+                <strong>订单查询信息</strong>
+                <span>你输入的联系方式；在 WZYP 接口要求时，订单查询也可能处理并发送安全密码；使用卡密查看或自动填写功能时，也可能处理安全密码。</span>
+              </div>
+              <div class="data-row">
+                <strong>验证信息</strong>
+                <span>你输入的人机验证码、WZYP 返回的验证码上下文和临时验证票据。</span>
+              </div>
+              <div class="data-row">
+                <strong>页面与订单内容</strong>
+                <span>当前 WZYP 页面中的商品名称、价格、库存状态，以及查询返回的订单号、商品信息、状态、金额、时间与卡密。扩展仅为展示和操作这些内容而临时处理它们。</span>
+              </div>
+            </div>
+            <p>扩展不会主动收集你的浏览历史，也不会读取 WZYP 域名之外的网页内容。扩展不收集支付卡号、身份证件、精确位置、通讯录、麦克风或摄像头数据。</p>
+          </section>
+
+          <section id="use">
+            <h2>3. 数据如何使用</h2>
+            <ul>
+              <li>在 WZYP 商品页面中识别商品卡片，按价格排序，并根据你的选择隐藏缺货商品。</li>
+              <li>在订单确认弹窗中，将已保存的联系方式与安全密码填入仍为空白的对应字段；扩展不会覆盖你已经输入的内容。</li>
+              <li>在你打开订单功能后，使用联系方式和临时验证票据向 WZYP 查询匹配订单；在 WZYP 接口要求时，订单查询也可能处理并发送安全密码。</li>
+              <li>在你查看已付款订单卡密时，将订单号及你提供的安全密码发送给 WZYP 订单接口。</li>
+              <li>在你点击复制时，把所选卡密写入系统剪贴板。</li>
+            </ul>
+            <p>扩展不会使用这些数据建立用户画像，不会用于广告投放，也不会出售、出租或以其他方式交易你的个人信息。</p>
+          </section>
+
+          <section id="storage">
+            <h2>4. 数据存储与保留</h2>
+            <h3>本地扩展存储</h3>
+            <p>商品筛选和排序偏好、联系方式、“长期记住密码”开关会保存在 Chrome 的本地扩展存储中。只有当你主动开启“长期记住密码”时，安全密码才会一并保存在本地扩展存储中。</p>
+            <h3>会话存储</h3>
+            <p>未开启“长期记住密码”时，安全密码仅保存在 Chrome 会话存储中。订单查询的人机验证票据也仅保存在会话存储中。Chrome 会在浏览器会话结束后清除这些数据。</p>
+            <h3>临时内存</h3>
+            <p>订单列表、订单详情、卡密、验证码内容及查询过程中的状态，仅在扩展当前运行期间临时处理，不会由扩展另行写入持久存储。</p>
+            <div class="note"><strong>重要提示：</strong>选择“长期记住密码”后，安全密码会以明文形式保存在该 Chrome 配置文件的扩展存储中。请仅在你信任且独占使用的设备和浏览器配置中启用此选项。</div>
+          </section>
+
+          <section id="permissions">
+            <h2>5. 浏览器权限说明</h2>
+            <p>扩展仅申请实现上述功能所需的权限：</p>
+            <div class="permissions">
+              <div class="permission">
+                <code>storage</code>
+                <p>保存商品显示偏好、联系方式，以及你选择保存的订单安全密码；同时在会话期间保存临时验证信息。</p>
+              </div>
+              <div class="permission">
+                <code>clipboardWrite</code>
+                <p>仅在你点击“复制”时，将单条或全部卡密写入剪贴板。扩展不会读取剪贴板内容。</p>
+              </div>
+              <div class="permission">
+                <code>https://wzyp.cn/*</code>
+                <p>在 WZYP 页面上整理商品、自动填写订单确认信息，并与 WZYP 接口通信。</p>
+              </div>
+              <div class="permission">
+                <code>https://*.wzyp.cn/*</code>
+                <p>在 WZYP 子域名页面提供相同功能，并处理由 WZYP 返回的订单与验证请求。</p>
+              </div>
+            </div>
+          </section>
+
+          <section id="sharing">
+            <h2>6. 数据共享与第三方服务</h2>
+            <p>扩展没有自有后端，也不会把数据发送给扩展开发者。与订单、卡密或验证码相关的请求，由你的浏览器直接发送至 WZYP 网站接口或 WZYP 指定的验证码校验地址。这些请求可能包含：</p>
+            <ul>
+              <li>订单查询可能包含联系方式、临时验证票据，以及 WZYP 接口要求时的安全密码；</li>
+              <li>读取卡密所需的订单号与安全密码；</li>
+              <li>完成人机验证所需的验证码及校验信息。</li>
+            </ul>
+            <p>除上述为实现你主动使用的功能而进行的通信外，扩展不会向第三方共享数据。扩展不包含广告 SDK、统计分析 SDK 或社交追踪器。</p>
+          </section>
+
+          <section id="security">
+            <h2>7. 数据安全</h2>
+            <p>扩展通过 Chrome 提供的扩展存储隔离机制保存本地数据，并通过 HTTPS 与 WZYP 通信。卡密默认以遮罩形式显示，只有在你操作后才会显示或复制。</p>
+            <p>任何本地存储都无法保证绝对安全。如果设备、Chrome 配置文件或浏览器扩展环境被他人控制，本地保存的数据可能面临风险。请妥善保护设备，避免在公共或共享设备上长期保存安全密码，并在提交订单前核对自动填写内容。</p>
+          </section>
+
+          <section id="choices">
+            <h2>8. 你的选择与控制</h2>
+            <ul>
+              <li>你可以不填写联系方式或安全密码；相应的自动填写、订单查询或卡密查看功能将无法使用。</li>
+              <li>你可以选择仅在当前浏览器会话中保存安全密码，而不启用长期记住。</li>
+              <li>你可以在扩展设置中更改联系方式、清除密码或关闭相关偏好。</li>
+              <li>你可以通过 Chrome 扩展管理页面清除扩展数据，或卸载扩展以删除其本地存储。</li>
+              <li>复制到剪贴板的卡密由操作系统和其他应用管理；如有需要，请在使用后覆盖或清除剪贴板内容。</li>
+            </ul>
+          </section>
+
+          <section id="children">
+            <h2>9. 未成年人</h2>
+            <p>本扩展不是面向未成年人设计的服务，也不会主动识别用户年龄或故意收集未成年人的个人信息。如监护人认为未成年人通过本扩展提供了个人信息，可通过下述渠道联系我们。</p>
+          </section>
+
+          <section id="changes">
+            <h2>10. 隐私政策更新</h2>
+            <p>我们可能因扩展功能、权限或法律要求发生变化而更新本政策。重大变更会通过本页面或 Chrome Web Store 版本说明予以说明。更新后的政策将在标注的生效日期起适用。</p>
+          </section>
+
+          <section id="contact">
+            <h2>11. 联系我们</h2>
+            <p>如对本政策、扩展权限或数据处理方式有疑问，请通过“链动小铺助手”的 <a href="https://chromewebstore.google.com/detail/%E9%93%BE%E5%8A%A8%E5%B0%8F%E9%93%BA%E5%8A%A9%E6%89%8B/gbamfnhpibghocogkbdhopchdmeaeofo" target="_blank" rel="noopener noreferrer">Chrome Web Store 商店页面</a>所提供的开发者支持渠道联系我们。</p>
+          </section>
+        </article>
+      </div>
+
+      <footer>
+        <p>链动小铺助手 · 隐私政策</p>
+        <p>最后更新：2026 年 10 月 8 日</p>
+      </footer>
+    </main>
+  </body>
+</html>

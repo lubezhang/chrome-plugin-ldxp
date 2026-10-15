@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "minimum_chrome_version": "102",
   "name": "链动小铺助手",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "整理链动小铺商品，查询订单并安全查看卡密。",
   "permissions": ["storage", "clipboardWrite"],
   "host_permissions": ["https://wzyp.cn/*", "https://*.wzyp.cn/*"],

@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-10-08
+
 ### Changed
 
 - Redesigned the extension popup for streamlined product management and order workflows.
@@ -35,6 +37,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added product sorting by price or site order and optional hiding of sold-out products.
 - Added local storage for product preferences, order contact details, and optional password persistence.
 
-[Unreleased]: https://github.com/lubezhang/chrome-plugin-ldxp/compare/v1.1.0...HEAD
+[1.2.0]: https://github.com/lubezhang/chrome-plugin-ldxp/compare/v1.1.0...v1.2.0
+[Unreleased]: https://github.com/lubezhang/chrome-plugin-ldxp/compare/v1.2.0...HEAD
 [1.1.0]: https://github.com/lubezhang/chrome-plugin-ldxp/compare/v1.0.3...v1.1.0
 [1.0.3]: https://github.com/lubezhang/chrome-plugin-ldxp/releases/tag/v1.0.3
